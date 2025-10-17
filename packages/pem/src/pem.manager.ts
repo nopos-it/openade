@@ -6,8 +6,8 @@
 import type { DocumentoCommerciale, EmissionPointType } from '@nopos-ade/common';
 import { DocumentBuilder, type DocumentLine } from './document.builder';
 import { JournalManager } from './journal.manager';
-import type { IPEMStorage } from './storage.interface';
 import { PELClient } from './pel.client';
+import type { IPEMStorage } from './storage.interface';
 
 export interface PEMConfig {
   deviceType: EmissionPointType;

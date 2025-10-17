@@ -8,10 +8,10 @@
  *                                          Audit queries from ADE
  */
 
-import { ADEClient, AuditServer, PELServer, OutcomePoller, AnomalyManager } from '@nopos-ade/pel';
+import { ADEClient, AnomalyManager, AuditServer, OutcomePoller, PELServer } from '@nopos-ade/pel';
+import sqlite3 from 'sqlite3';
 import { FilesystemStorage } from './filesystem.storage';
 import { SQLDatabase } from './sql.database';
-import sqlite3 from 'sqlite3';
 
 async function main() {
   console.log('🚀 PEL Server - Complete Setup\n');

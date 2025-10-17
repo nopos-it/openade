@@ -4,23 +4,23 @@
  */
 
 import type {
-  EmissionPointCensus,
-  EmissionPointActivationResult,
-  EmissionPointStatusInfo,
-  CorrispettiviGiornalieri,
   CorrispettiviEsito,
+  CorrispettiviGiornalieri,
   DocumentoCommerciale,
+  EmissionPointActivationResult,
+  EmissionPointCensus,
+  EmissionPointStatusInfo,
   Journal,
   TransmissionOutcome,
 } from '@nopos-ade/common';
 import type { AnomalyReport } from './anomaly.manager';
 
 import {
-  buildEmissionPointCensusXML,
-  buildDailyReceiptsXML,
-  buildCommercialDocumentXML,
-  buildJournalXML,
   buildAnomaliesXML,
+  buildCommercialDocumentXML,
+  buildDailyReceiptsXML,
+  buildEmissionPointCensusXML,
+  buildJournalXML,
 } from '@nopos-ade/common';
 
 /**

@@ -7,12 +7,12 @@
  * Based on: Allegato–SSW-Api Rest Audit Esposti Erogatore.pdf
  */
 
-import express, { Request, Response, NextFunction } from 'express';
+import type { DocumentoCommerciale, Journal } from '@nopos-ade/common';
+import express, { NextFunction, Request, Response } from 'express';
 import { randomUUID } from 'node:crypto';
 import { Server } from 'node:http';
-import type { Journal, DocumentoCommerciale } from '@nopos-ade/common';
-import type { IStorage } from './storage.interface';
 import type { IDatabase } from './database.interface';
+import type { IStorage } from './storage.interface';
 
 /**
  * Audit request status

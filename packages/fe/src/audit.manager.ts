@@ -3,9 +3,8 @@
  * Comprehensive audit trails for FatturaPA invoice operations
  */
 
-import { writeFileSync, readFileSync, existsSync, mkdirSync, readdirSync } from 'fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
-import { createHash } from 'crypto';
 
 export interface AuditConfig {
   /** Audit log directory */

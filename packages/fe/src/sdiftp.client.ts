@@ -3,8 +3,8 @@
  * SFTP client for SDI transmission
  */
 
-import { Client } from 'ssh2';
 import type { InvoiceTransmissionResult } from '@nopos-ade/common';
+import { Client } from 'ssh2';
 
 export interface SDIFTPConfig {
   /** SFTP host */

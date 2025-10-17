@@ -2,7 +2,7 @@
  * Validator Tests
  */
 
-import { validatePartitaIVA, validateCodiceFiscale } from '../src/validators';
+import { validateCodiceFiscale, validatePartitaIVA } from '../src/validators';
 
 describe('Validators', () => {
   describe('validatePartitaIVA', () => {

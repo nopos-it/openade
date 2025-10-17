@@ -8,13 +8,13 @@
  */
 
 import type {
-  EmissionPointCensus,
-  EmissionPointStatusInfo,
+  CorrispettiviEsito,
+  CorrispettiviGiornalieri,
+  DocumentoCommerciale,
   ElaborationPointCensus,
   ElaborationPointStatusInfo,
-  CorrispettiviGiornalieri,
-  CorrispettiviEsito,
-  DocumentoCommerciale,
+  EmissionPointCensus,
+  EmissionPointStatusInfo,
   Journal,
 } from '@nopos-ade/common';
 

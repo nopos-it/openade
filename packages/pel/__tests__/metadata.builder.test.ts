@@ -2,8 +2,8 @@
  * Metadata Builder Tests
  */
 
-import { generateMetadataXML, createArchiveMetadata } from '../src/metadata.builder';
-import type { Journal, DocumentoCommerciale } from '@nopos-ade/common';
+import type { DocumentoCommerciale, Journal } from '@nopos-ade/common';
+import { createArchiveMetadata, generateMetadataXML } from '../src/metadata.builder';
 
 describe('MetadataBuilder', () => {
   const mockJournal: Journal = {

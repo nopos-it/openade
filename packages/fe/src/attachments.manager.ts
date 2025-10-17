@@ -4,10 +4,10 @@
  */
 
 import { createHash } from 'crypto';
-import { extname, basename } from 'path';
-import type { IStorage } from './storage.interface';
+import { basename, extname } from 'path';
 import { CompressionService } from './compression.service';
 import { EncryptionService } from './encryption.service';
+import type { IStorage } from './storage.interface';
 
 export interface AttachmentConfig {
   /** File storage service */

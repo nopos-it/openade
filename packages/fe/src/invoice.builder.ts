@@ -4,13 +4,13 @@
  */
 
 import type {
-  FatturaElettronica,
-  FatturaElettronicaHeader,
-  FatturaElettronicaBody,
   CedentePrestatore,
   CessionarioCommittente,
-  DettaglioLinee,
   DatiRiepilogoFE,
+  DettaglioLinee,
+  FatturaElettronica,
+  FatturaElettronicaBody,
+  FatturaElettronicaHeader,
 } from '@nopos-ade/common';
 
 export interface InvoiceBuilderConfig {

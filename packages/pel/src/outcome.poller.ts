@@ -4,8 +4,8 @@
  */
 
 import type { CorrispettiviEsito } from '@nopos-ade/common';
-import type { IDatabase } from './database.interface';
 import type { ADEClient } from './ade.client';
+import type { IDatabase } from './database.interface';
 
 export interface OutcomePollerConfig {
   /** Database instance */

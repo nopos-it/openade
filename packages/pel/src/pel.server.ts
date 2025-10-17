@@ -3,12 +3,12 @@
  * Receives data from PEM devices and manages transmission to ADE
  */
 
+import type { DocumentoCommerciale, ISODateTime, Journal } from '@nopos-ade/common';
 import express, { Request, Response, Router } from 'express';
-import type { DocumentoCommerciale, Journal, ISODateTime } from '@nopos-ade/common';
-import type { IStorage } from './storage.interface';
-import type { IDatabase } from './database.interface';
-import type { ADEClient } from './ade.client';
 import { v4 as uuidv4 } from 'uuid';
+import type { ADEClient } from './ade.client';
+import type { IDatabase } from './database.interface';
+import type { IStorage } from './storage.interface';
 
 export interface PELServerConfig {
   storage: IStorage;

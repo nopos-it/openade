@@ -3,14 +3,14 @@
  * Handles SDI receipts and notifications
  */
 
-import { XMLParser } from 'fast-xml-parser';
 import type {
+  NotificaEsito,
+  NotificaMancataConsegna,
+  NotificaScarto,
   ReceiptType,
   RicevutaConsegna,
-  NotificaScarto,
-  NotificaMancataConsegna,
-  NotificaEsito,
 } from '@nopos-ade/common';
+import { XMLParser } from 'fast-xml-parser';
 
 /**
  * Parse receipt type from filename

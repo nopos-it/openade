@@ -3,8 +3,8 @@
  * Provides timestamping functionality for invoices
  */
 
-import { HttpService } from './http.service';
 import { Asn1Service } from './asn1.service';
+import { HttpService } from './http.service';
 
 export interface TSAConfig {
   endpoint: string;

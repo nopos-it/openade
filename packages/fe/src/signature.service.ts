@@ -3,7 +3,7 @@
  * Provides digital signature functionality for invoices
  */
 
-import { createSign, createVerify, createHash } from 'crypto';
+import { createHash, createSign, createVerify } from 'crypto';
 import { readFileSync } from 'fs';
 
 export interface SignatureResult {

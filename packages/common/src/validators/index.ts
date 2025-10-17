@@ -2,8 +2,7 @@
  * Validators for ensuring data compliance with Agenzia delle Entrate specifications
  */
 
-import { z } from 'zod';
-import { PartitaIVA, CodiceFiscale } from '../types/common';
+import { CodiceFiscale, PartitaIVA } from '../types/common';
 import type { CorrispettiviGiornalieri } from '../types/corrispettivi';
 import type { DocumentoCommerciale } from '../types/dc';
 

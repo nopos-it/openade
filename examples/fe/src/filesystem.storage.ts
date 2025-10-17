@@ -2,9 +2,9 @@
  * Filesystem Storage Implementation for FatturaPA
  */
 
+import type { IStorage } from '@nopos-ade/fe';
 import { promises as fs } from 'fs';
 import { dirname, join } from 'path';
-import type { IStorage } from '@nopos-ade/fe';
 
 export class FilesystemStorage implements IStorage {
   constructor(private basePath: string) {}

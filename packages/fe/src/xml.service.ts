@@ -3,7 +3,7 @@
  * Uses fast-xml-parser for XML operations
  */
 
-import { XMLParser, XMLBuilder } from 'fast-xml-parser';
+import { XMLBuilder, XMLParser } from 'fast-xml-parser';
 
 export class XmlService {
   private parser: XMLParser;

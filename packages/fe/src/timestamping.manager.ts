@@ -4,8 +4,8 @@
  */
 
 import { createHash } from 'crypto';
-import { TSAService } from './timestamping.service';
 import { Asn1Service } from './asn1.service';
+import { TSAService } from './timestamping.service';
 
 export interface TimestampingConfig {
   /** TSA (Time Stamping Authority) endpoint URL */

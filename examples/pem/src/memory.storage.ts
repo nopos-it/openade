@@ -3,8 +3,8 @@
  * Simple storage for testing/demo purposes
  */
 
-import type { IPEMStorage } from '@nopos-ade/pem';
 import type { DocumentoCommerciale } from '@nopos-ade/common';
+import type { IPEMStorage } from '@nopos-ade/pem';
 
 export class MemoryStorage implements IPEMStorage {
   private documents: Map<string, DocumentoCommerciale> = new Map();

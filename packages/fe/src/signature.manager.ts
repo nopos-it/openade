@@ -3,8 +3,8 @@
  * Handles digital signatures for FatturaPA invoices
  */
 
-import type { IStorage } from './storage.interface';
 import { SignatureService } from './signature.service';
+import type { IStorage } from './storage.interface';
 
 export interface SignatureConfig {
   /** File storage service */

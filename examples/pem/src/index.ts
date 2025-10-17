@@ -6,8 +6,8 @@
  * PEM (Device) → sends documents in real-time → PEL (Server) → transmits to → ADE
  */
 
-import { PEMManager } from '@nopos-ade/pem';
 import { EmissionPointType } from '@nopos-ade/common';
+import { PEMManager } from '@nopos-ade/pem';
 import { MemoryStorage } from './memory.storage';
 
 async function main() {

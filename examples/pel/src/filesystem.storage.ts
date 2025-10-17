@@ -2,9 +2,9 @@
  * Filesystem Storage Implementation
  */
 
+import type { IStorage } from '@nopos-ade/pel';
 import { promises as fs } from 'fs';
 import { dirname, join } from 'path';
-import type { IStorage } from '@nopos-ade/pel';
 
 export class FilesystemStorage implements IStorage {
   constructor(private basePath: string) {}

@@ -5,13 +5,13 @@
 
 // Export all types
 export * from './types/common';
-export * from './types/pem';
-export * from './types/pel';
 export * from './types/corrispettivi';
 export * from './types/dc';
+export * from './types/fe';
 export * from './types/journal';
 export * from './types/lottery';
-export * from './types/fe';
+export * from './types/pel';
+export * from './types/pem';
 
 // Export XML builders
 export * from './builders/xml.builder';

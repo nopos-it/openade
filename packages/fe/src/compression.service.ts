@@ -3,8 +3,8 @@
  * Uses Node.js built-in zlib for compression operations
  */
 
-import { gzip, gunzip, deflate, inflate, brotliCompress, brotliDecompress } from 'zlib';
 import { promisify } from 'util';
+import { brotliCompress, brotliDecompress, deflate, gunzip, gzip, inflate } from 'zlib';
 
 const gzipAsync = promisify(gzip);
 const gunzipAsync = promisify(gunzip);

@@ -3,11 +3,11 @@
  * Handles archive management and retention policies for FatturaPA invoices
  */
 
-import { createHash } from 'crypto';
 import type { FatturaElettronica } from '@nopos-ade/common';
-import type { IStorage } from './storage.interface';
+import { createHash } from 'crypto';
 import { CompressionService } from './compression.service';
 import { EncryptionService } from './encryption.service';
+import type { IStorage } from './storage.interface';
 
 export interface ArchiveConfig {
   /** File storage service */

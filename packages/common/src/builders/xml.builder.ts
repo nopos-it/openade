@@ -4,10 +4,10 @@
  */
 
 import { XMLBuilder } from 'fast-xml-parser';
-import type { EmissionPointCensus } from '../types/pem';
 import type { CorrispettiviGiornalieri } from '../types/corrispettivi';
 import type { DocumentoCommerciale } from '../types/dc';
 import type { Journal } from '../types/journal';
+import type { EmissionPointCensus } from '../types/pem';
 
 /**
  * Create configured XML builder

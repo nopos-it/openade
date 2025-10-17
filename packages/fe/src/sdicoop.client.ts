@@ -4,8 +4,8 @@
  */
 
 import type { InvoiceTransmissionResult } from '@nopos-ade/common';
-import { XmlService } from './xml.service';
 import { HttpService } from './http.service';
+import { XmlService } from './xml.service';
 
 export interface SDICOOPConfig {
   /** SDI endpoint URL */

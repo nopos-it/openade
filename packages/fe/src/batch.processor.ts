@@ -4,9 +4,8 @@
  */
 
 import type { FatturaElettronica, InvoiceTransmissionResult } from '@nopos-ade/common';
-import { SDICOOPClient, type SDICOOPConfig } from './sdicoop.client';
 import { buildInvoiceXML } from './invoice.xml';
-import { InvoiceBuilder } from './invoice.builder';
+import { SDICOOPClient, type SDICOOPConfig } from './sdicoop.client';
 
 export interface BatchConfig {
   /** Maximum batch size */

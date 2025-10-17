@@ -15,7 +15,7 @@ export type { DocumentLine } from './document.builder';
 
 // PDF generator
 export { generateCommercialDocumentPDF, generateDataMatrixContent } from './document.pdf';
-export type { PDFGeneratorConfig, DataMatrixContent } from './document.pdf';
+export type { DataMatrixContent, PDFGeneratorConfig } from './document.pdf';
 
 // Journal manager
 export { JournalManager } from './journal.manager';

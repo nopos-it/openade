@@ -3,7 +3,7 @@
  * Manages the immutable journal with hash chains
  */
 
-import type { DocumentoCommerciale, Journal } from '@nopos-ade/common';
+import type { DocumentoCommerciale } from '@nopos-ade/common';
 import { createHash } from 'crypto';
 
 export interface JournalEntry {
