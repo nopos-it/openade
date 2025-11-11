@@ -23,8 +23,29 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
+      - name: Setup Python (Windows)
+        if: matrix.os == 'windows-latest'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Configure Git line endings (Windows)
+        if: matrix.os == 'windows-latest'
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
+
+      - name: Configure npm for Windows native builds
+        if: matrix.os == 'windows-latest'
+        shell: pwsh
+        run: |
+          $pythonPath = (Get-Command python).Source
+          npm config set msvs_version 2022
+          npm config set python $pythonPath
+
       - name: Install dependencies
         run: npm ci
+        timeout-minutes: 20
 
       - name: Lint
         run: npm run lint
