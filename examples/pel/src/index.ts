@@ -8,7 +8,7 @@
  *                                          Audit queries from ADE
  */
 
-import { ADEClient, AnomalyManager, AuditServer, OutcomePoller, PELServer } from '@nopos-ade/pel';
+import { ADEClient, AnomalyManager, AuditServer, OutcomePoller, PELServer } from '@openade/pel';
 import sqlite3 from 'sqlite3';
 import { FilesystemStorage } from './filesystem.storage';
 import { SQLDatabase } from './sql.database';

@@ -7,8 +7,8 @@
     "dev": "ts-node --watch src/index.ts"
   },
   "dependencies": {
-    "@nopos-ade/pem": "file:../../packages/pem",
-    "@nopos-ade/common": "file:../../packages/common"
+    "@openade/pem": "file:../../packages/pem",
+    "@openade/common": "file:../../packages/common"
   },
   "devDependencies": {
     "ts-node": "^10.9.2",

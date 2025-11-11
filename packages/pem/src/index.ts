@@ -1,5 +1,5 @@
 /**
- * @nopos-ade/pem
+ * @openade/pem
  * Punto di Emissione (Emission Point) - Device library
  *
  * Handles fiscal document emission, journal management, and local storage

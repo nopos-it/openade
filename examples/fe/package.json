@@ -2,15 +2,15 @@
   "name": "fe-example",
   "version": "0.1.0",
   "private": true,
-  "description": "Example usage of @nopos-ade/fe",
+  "description": "Example usage of @openade/fe",
   "type": "module",
   "scripts": {
     "start": "tsx src/index.ts",
     "dev": "tsx watch src/index.ts"
   },
   "dependencies": {
-    "@nopos-ade/common": "file:../../packages/common",
-    "@nopos-ade/fe": "file:../../packages/fe",
+    "@openade/common": "file:../../packages/common",
+    "@openade/fe": "file:../../packages/fe",
     "ssh2": "^1.17.0"
   },
   "devDependencies": {

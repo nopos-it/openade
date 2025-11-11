@@ -1,4 +1,4 @@
-# @nopos-ade/fe
+# @openade/fe
 
 Electronic Invoicing (Fatturazione Elettronica) library for Italian SDI (Sistema di Interscambio).
 
@@ -15,7 +15,7 @@ Electronic Invoicing (Fatturazione Elettronica) library for Italian SDI (Sistema
 ## Installation
 
 ```bash
-npm install @nopos-ade/fe @nopos-ade/common
+npm install @openade/fe @openade/common
 ```
 
 ## Quick Start
@@ -23,7 +23,7 @@ npm install @nopos-ade/fe @nopos-ade/common
 ### 1. Create Invoice Builder
 
 ```typescript
-import { InvoiceBuilder } from '@nopos-ade/fe';
+import { InvoiceBuilder } from '@openade/fe';
 
 const builder = new InvoiceBuilder({
   supplierVatNumber: '12345678901',
@@ -72,7 +72,7 @@ const invoice = builder.build({
 ### 3. Generate XML
 
 ```typescript
-import { buildInvoiceXML } from '@nopos-ade/fe';
+import { buildInvoiceXML } from '@openade/fe';
 
 const xml = buildInvoiceXML(invoice);
 const filename = builder.generateFilename(); // IT12345678901_00001.xml
@@ -83,7 +83,7 @@ const filename = builder.generateFilename(); // IT12345678901_00001.xml
 #### SDICOOP (Web Service) - Recommended
 
 ```typescript
-import { SDIClient } from '@nopos-ade/fe';
+import { SDIClient } from '@openade/fe';
 
 const sdiClient = new SDIClient({
   endpoint: 'https://testservizi.fatturapa.it/services/ricezioneFatture',
@@ -127,7 +127,7 @@ if (result.success) {
 ### 5. Handle Receipts
 
 ```typescript
-import { ReceiptHandler } from '@nopos-ade/fe';
+import { ReceiptHandler } from '@openade/fe';
 
 const receiptHandler = new ReceiptHandler();
 const receipt = receiptHandler.parseReceipt(receiptXml);
@@ -176,7 +176,7 @@ if (receiptHandler.isSuccessReceipt(receipt)) {
 Implement `IFEStorage` for custom storage:
 
 ```typescript
-import { IFEStorage } from '@nopos-ade/fe';
+import { IFEStorage } from '@openade/fe';
 
 class MyStorage implements IFEStorage {
   async saveInvoice(filename: string, xml: string): Promise<void> {

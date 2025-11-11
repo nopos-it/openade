@@ -3,7 +3,7 @@
  * Handles archive management and retention policies for FatturaPA invoices
  */
 
-import type { FatturaElettronica } from '@nopos-ade/common';
+import type { FatturaElettronica } from '@openade/common';
 import { createHash } from 'crypto';
 import { CompressionService } from './compression.service';
 import { EncryptionService } from './encryption.service';

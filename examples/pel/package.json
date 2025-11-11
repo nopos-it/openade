@@ -7,8 +7,8 @@
     "dev": "ts-node --watch src/index.ts"
   },
   "dependencies": {
-    "@nopos-ade/pel": "file:../../packages/pel",
-    "@nopos-ade/common": "file:../../packages/common",
+    "@openade/pel": "file:../../packages/pel",
+    "@openade/common": "file:../../packages/common",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {

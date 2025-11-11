@@ -3,7 +3,7 @@
  * Web service client for SDI transmission via SOAP
  */
 
-import type { InvoiceTransmissionResult } from '@nopos-ade/common';
+import type { InvoiceTransmissionResult } from '@openade/common';
 import { HttpService } from './http.service';
 import { XmlService } from './xml.service';
 

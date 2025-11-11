@@ -1,5 +1,5 @@
 /**
- * @nopos-ade/common
+ * @openade/common
  * Shared types, validators, and XML builders
  */
 

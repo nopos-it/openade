@@ -3,7 +3,7 @@
  * Generates metadata XML file according to Allegato-SSW-Metadati specifications
  */
 
-import type { DocumentoCommerciale, Journal } from '@nopos-ade/common';
+import type { DocumentoCommerciale, Journal } from '@openade/common';
 
 export interface MetadataConfig {
   matricolaPEM: string;

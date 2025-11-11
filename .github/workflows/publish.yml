@@ -37,19 +37,19 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: Publish @nopos-ade/common
+      - name: Publish @openade/common
         working-directory: ./packages/common
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish @nopos-ade/pem
+      - name: Publish @openade/pem
         working-directory: ./packages/pem
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish @nopos-ade/pel
+      - name: Publish @openade/pel
         working-directory: ./packages/pel
         run: npm publish --access public
         env:

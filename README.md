@@ -1,7 +1,7 @@
-# 📦 nopos-ade
+# 📦 openade
 
-[![CI](https://github.com/yourusername/nopos-ade/actions/workflows/ci.yml/badge.svg)](https://github.com/yourusername/nopos-ade/actions/workflows/ci.yml)
-[![npm version](https://badge.fury.io/js/%40nopos-ade%2Fcommon.svg)](https://www.npmjs.com/package/@nopos-ade/common)
+[![CI](https://github.com/yourusername/openade/actions/workflows/ci.yml/badge.svg)](https://github.com/yourusername/openade/actions/workflows/ci.yml)
+[![npm version](https://badge.fury.io/js/%40openade%2Fcommon.svg)](https://www.npmjs.com/package/@openade/common)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue.svg)](https://www.typescriptlang.org/)
 [![Docker](https://img.shields.io/badge/Docker-ready-blue.svg)](https://hub.docker.com/)
@@ -14,18 +14,18 @@ TypeScript library for Italian Agenzia delle Entrate electronic fiscal documents
 
 ## 📦 Packages
 
-- **@nopos-ade/common** - Shared types, validators, XML builders
-- **@nopos-ade/pem** - Point of Emission (device/POS library)
-- **@nopos-ade/pel** - Elaboration Point (server library)
-- **@nopos-ade/fe** - Fatturazione Elettronica (Electronic Invoicing for SDI)
+- **@openade/common** - Shared types, validators, XML builders
+- **@openade/pem** - Point of Emission (device/POS library)
+- **@openade/pel** - Elaboration Point (server library)
+- **@openade/fe** - Fatturazione Elettronica (Electronic Invoicing for SDI)
 
 ## 🚀 Quick Start
 
 ### PEM (Point of Emission)
 
 ```typescript
-import { PEMManager, DocumentBuilder, LotteryGenerator } from '@nopos-ade/pem';
-import { EmissionPointType } from '@nopos-ade/common';
+import { PEMManager, DocumentBuilder, LotteryGenerator } from '@openade/pem';
+import { EmissionPointType } from '@openade/common';
 
 const pem = new PEMManager({
   emissionPointId: 'PEM001',
@@ -52,7 +52,7 @@ await pem.emitReceipt(receipt);
 ### PEL (Point of Elaboration)
 
 ```typescript
-import { PELServer, AuditServer, ADEClient } from '@nopos-ade/pel';
+import { PELServer, AuditServer, ADEClient } from '@openade/pel';
 
 const pelServer = new PELServer({
   port: 4000,
@@ -73,7 +73,7 @@ await auditServer.start();
 ### FE (Fatturazione Elettronica)
 
 ```typescript
-import { InvoiceBuilder, buildInvoiceXML, SDIClient } from '@nopos-ade/fe';
+import { InvoiceBuilder, buildInvoiceXML, SDIClient } from '@openade/fe';
 
 const builder = new InvoiceBuilder({
   supplierVatNumber: '12345678901',

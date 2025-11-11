@@ -9,7 +9,7 @@
  * 3. Implement actual PDF rendering with proper layout per Allegato_SSW-LayoutDC
  */
 
-import type { DocumentoCommerciale } from '@nopos-ade/common';
+import type { DocumentoCommerciale } from '@openade/common';
 
 export interface PDFGeneratorConfig {
   /** CAU - Codice Autorizzativo Univoco del PEL (4 characters) */

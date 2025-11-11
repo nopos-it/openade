@@ -1,5 +1,5 @@
 /**
- * @nopos-ade/fe
+ * @openade/fe
  * Fatturazione Elettronica (Electronic Invoicing)
  * Library for creating and transmitting FatturaPA invoices to SDI
  */

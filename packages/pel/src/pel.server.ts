@@ -3,7 +3,7 @@
  * Receives data from PEM devices and manages transmission to ADE
  */
 
-import type { DocumentoCommerciale, ISODateTime, Journal } from '@nopos-ade/common';
+import type { DocumentoCommerciale, ISODateTime, Journal } from '@openade/common';
 import express, { Request, Response, Router } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import type { ADEClient } from './ade.client';
@@ -225,7 +225,7 @@ export class PELServer {
    * Verify journal hash chain integrity
    * Validates the cryptographic hash chain to ensure journal hasn't been tampered with
    *
-   * Note: The Journal type from @nopos-ade/common uses VoceGiornale which doesn't include
+   * Note: The Journal type from @openade/common uses VoceGiornale which doesn't include
    * hash fields. In production, you would need to extend the Journal type to include
    * hash chain information or verify hashes from stored journal entries.
    */

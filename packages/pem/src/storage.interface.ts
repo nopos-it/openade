@@ -4,7 +4,7 @@
  * Can be implemented with IndexedDB, SQLite, LocalStorage, etc.
  */
 
-import type { DocumentoCommerciale } from '@nopos-ade/common';
+import type { DocumentoCommerciale } from '@openade/common';
 
 export interface IPEMStorage {
   /**

@@ -30,7 +30,7 @@ COPY package*.json ./
 COPY packages/common/package*.json ./packages/common/
 COPY packages/pel/package*.json ./packages/pel/
 
-RUN npm ci --production --workspace=@nopos-ade/common --workspace=@nopos-ade/pel
+RUN npm ci --production --workspace=@openade/common --workspace=@openade/pel
 
 # Copy built files
 COPY --from=builder /app/packages/common/dist ./packages/common/dist

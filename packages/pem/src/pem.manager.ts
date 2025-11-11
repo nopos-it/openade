@@ -3,7 +3,7 @@
  * Main class for managing a Punto di Emissione (Emission Point)
  */
 
-import type { DocumentoCommerciale, EmissionPointType } from '@nopos-ade/common';
+import type { DocumentoCommerciale, EmissionPointType } from '@openade/common';
 import { DocumentBuilder, type DocumentLine } from './document.builder';
 import { JournalManager } from './journal.manager';
 import { PELClient } from './pel.client';

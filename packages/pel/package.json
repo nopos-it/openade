@@ -1,5 +1,5 @@
 {
-  "name": "@nopos-ade/pel",
+  "name": "@openade/pel",
   "version": "0.1.0",
   "description": "Punto di Elaborazione (Elaboration Point) - Server library for managing PEMs and communicating with ADE",
   "main": "dist/index.js",
@@ -22,7 +22,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@nopos-ade/common": "file:../common",
+    "@openade/common": "file:../common",
     "express": "^5.1.0",
     "uuid": "^13.0.0"
   },
@@ -30,11 +30,11 @@
     "@types/node": "^20.0.0"
   },
   "devDependencies": {
-    "@types/express": "^5.0.3",
+    "@types/express": "^5.0.5",
     "@types/jest": "^30.0.0",
     "@types/uuid": "^11.0.0",
     "jest": "^30.2.0",
-    "ts-jest": "^29.4.4",
+    "ts-jest": "^29.4.5",
     "typescript": "^5.9.3"
   },
   "jest": {

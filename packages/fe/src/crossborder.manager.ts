@@ -3,7 +3,7 @@
  * Enhanced support for international operations and EU VAT
  */
 
-import type { FatturaElettronica, Indirizzo } from '@nopos-ade/common';
+import type { FatturaElettronica, Indirizzo } from '@openade/common';
 import { EUVATService } from './euvat.service';
 
 export interface CrossBorderConfig {

@@ -1,4 +1,4 @@
-# @nopos-ade/pem
+# @openade/pem
 
 Point of Emission (Punto di Emissione) library for Italian fiscal receipts and commercial documents.
 
@@ -15,7 +15,7 @@ Point of Emission (Punto di Emissione) library for Italian fiscal receipts and c
 ## Installation
 
 ```bash
-npm install @nopos-ade/pem @nopos-ade/common
+npm install @openade/pem @openade/common
 ```
 
 ## Quick Start
@@ -23,7 +23,7 @@ npm install @nopos-ade/pem @nopos-ade/common
 ### 1. Create PEM Manager
 
 ```typescript
-import { PEMManager, EmissionPointType } from '@nopos-ade/pem';
+import { PEMManager, EmissionPointType } from '@openade/pem';
 
 const pem = new PEMManager(
   {
@@ -79,7 +79,7 @@ await pem.closeSession();
 Create documents manually:
 
 ```typescript
-import { DocumentBuilder } from '@nopos-ade/pem';
+import { DocumentBuilder } from '@openade/pem';
 
 const builder = new DocumentBuilder({
   vatNumber: '12345678901',
@@ -100,7 +100,7 @@ const document = builder
 Generate PDF with Data Matrix:
 
 ```typescript
-import { generateCommercialDocumentPDF } from '@nopos-ade/pem';
+import { generateCommercialDocumentPDF } from '@openade/pem';
 
 const pdfBuffer = await generateCommercialDocumentPDF(document, {
   includeDataMatrix: true,
@@ -123,7 +123,7 @@ const lastHash = journal.getLastHash();
 Generate lottery codes:
 
 ```typescript
-import { LotteryGenerator } from '@nopos-ade/pem';
+import { LotteryGenerator } from '@openade/pem';
 
 const generator = new LotteryGenerator({
   vatNumber: '12345678901',
@@ -142,7 +142,7 @@ const deferredCode = generator.generateDeferredLottery();
 Implement `IPEMStorage` for custom storage:
 
 ```typescript
-import { IPEMStorage } from '@nopos-ade/pem';
+import { IPEMStorage } from '@openade/pem';
 
 class MyStorage implements IPEMStorage {
   async saveDocument(number: string, document: DocumentoCommerciale): Promise<void> {
@@ -168,7 +168,7 @@ class MyStorage implements IPEMStorage {
 Connect to PEL server for real-time synchronization:
 
 ```typescript
-import { PELClient } from '@nopos-ade/pem';
+import { PELClient } from '@openade/pem';
 
 const pelClient = new PELClient({
   pelBaseUrl: 'https://pel.example.com',

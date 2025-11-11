@@ -3,7 +3,7 @@
  * Handles batch processing for high-volume invoice scenarios
  */
 
-import type { FatturaElettronica, InvoiceTransmissionResult } from '@nopos-ade/common';
+import type { FatturaElettronica, InvoiceTransmissionResult } from '@openade/common';
 import { buildInvoiceXML } from './invoice.xml';
 import { SDICOOPClient, type SDICOOPConfig } from './sdicoop.client';
 

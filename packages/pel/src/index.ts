@@ -1,5 +1,5 @@
 /**
- * @nopos-ade/pel
+ * @openade/pel
  * Punto di Elaborazione (Elaboration Point)
  * Server library for managing PEMs, communicating with ADE, and handling audits
  */

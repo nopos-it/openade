@@ -12,7 +12,7 @@ import type {
   EmissionPointStatusInfo,
   Journal,
   TransmissionOutcome,
-} from '@nopos-ade/common';
+} from '@openade/common';
 import type { AnomalyReport } from './anomaly.manager';
 
 import {
@@ -21,7 +21,7 @@ import {
   buildDailyReceiptsXML,
   buildEmissionPointCensusXML,
   buildJournalXML,
-} from '@nopos-ade/common';
+} from '@openade/common';
 
 /**
  * Configuration for API client

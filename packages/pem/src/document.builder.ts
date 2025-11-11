@@ -3,7 +3,7 @@
  * Generates commercial documents (receipts) with proper structure
  */
 
-import type { DocumentoCommerciale } from '@nopos-ade/common';
+import type { DocumentoCommerciale } from '@openade/common';
 
 export interface DocumentLine {
   description: string;

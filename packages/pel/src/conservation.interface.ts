@@ -5,7 +5,7 @@
  * Conservazione Digitale a Norma per documenti fiscali
  */
 
-import type { DocumentoCommerciale, Journal } from '@nopos-ade/common';
+import type { DocumentoCommerciale, Journal } from '@openade/common';
 
 /**
  * Conservation package metadata

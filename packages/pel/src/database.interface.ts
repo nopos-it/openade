@@ -16,7 +16,7 @@ import type {
   EmissionPointCensus,
   EmissionPointStatusInfo,
   Journal,
-} from '@nopos-ade/common';
+} from '@openade/common';
 
 /**
  * Query filters for searching records

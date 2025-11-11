@@ -3,7 +3,7 @@
  * Polls ADE for daily receipts transmission outcomes
  */
 
-import type { CorrispettiviEsito } from '@nopos-ade/common';
+import type { CorrispettiviEsito } from '@openade/common';
 import type { ADEClient } from './ade.client';
 import type { IDatabase } from './database.interface';
 

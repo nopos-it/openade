@@ -3,7 +3,7 @@
  * Generates FatturaPA XML from invoice data
  */
 
-import type { FatturaElettronica } from '@nopos-ade/common';
+import type { FatturaElettronica } from '@openade/common';
 import { XMLBuilder } from 'fast-xml-parser';
 
 /**

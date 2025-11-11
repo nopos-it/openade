@@ -1,5 +1,5 @@
 {
-  "name": "nopos-ade",
+  "name": "openade",
   "version": "0.1.0",
   "description": "TypeScript libraries for Italian Agenzia delle Entrate electronic fiscal receipts",
   "private": true,
@@ -47,7 +47,7 @@
   "license": "MIT",
   "devDependencies": {
     "husky": "^9.1.7",
-    "lint-staged": "^16.2.4",
+    "lint-staged": "^16.2.6",
     "prettier": "^3.6.2",
     "prettier-plugin-organize-imports": "^4.3.0",
     "typescript": "^5.9.3"

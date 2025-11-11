@@ -1,6 +1,6 @@
 # FE Example - Fatturazione Elettronica (Electronic Invoicing)
 
-This comprehensive example demonstrates all features of the `@nopos-ade/fe` package for creating and managing electronic invoices (FatturaPA) for the Italian tax authority's Sistema di Interscambio (SDI).
+This comprehensive example demonstrates all features of the `@openade/fe` package for creating and managing electronic invoices (FatturaPA) for the Italian tax authority's Sistema di Interscambio (SDI).
 
 ## Features Demonstrated
 

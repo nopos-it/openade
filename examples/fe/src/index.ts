@@ -14,7 +14,7 @@ import {
   InvoiceBuilder,
   SDICOOPClient,
   TimestampingManager,
-} from '@nopos-ade/fe';
+} from '@openade/fe';
 
 import { FilesystemStorage } from './filesystem.storage';
 import { SQLiteDatabase } from './sqlite.database';

@@ -2,7 +2,7 @@
  * Filesystem Storage Implementation
  */
 
-import type { IStorage } from '@nopos-ade/pel';
+import type { IStorage } from '@openade/pel';
 import { promises as fs } from 'fs';
 import { dirname, join } from 'path';
 

@@ -1,13 +1,13 @@
 /**
  * PEM Example Project
- * Demonstrates a complete Point of Sale using @nopos-ade/pem
+ * Demonstrates a complete Point of Sale using @openade/pem
  *
  * ARCHITECTURE:
  * PEM (Device) → sends documents in real-time → PEL (Server) → transmits to → ADE
  */
 
-import { EmissionPointType } from '@nopos-ade/common';
-import { PEMManager } from '@nopos-ade/pem';
+import { EmissionPointType } from '@openade/common';
+import { PEMManager } from '@openade/pem';
 import { MemoryStorage } from './memory.storage';
 
 async function main() {

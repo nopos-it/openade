@@ -3,7 +3,7 @@
  * Used by PEM to communicate with PEL server
  */
 
-import type { DocumentoCommerciale, Journal } from '@nopos-ade/common';
+import type { DocumentoCommerciale, Journal } from '@openade/common';
 
 export interface PELClientConfig {
   pelBaseUrl: string;

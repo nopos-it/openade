@@ -1,5 +1,5 @@
 {
-  "name": "@nopos-ade/fe",
+  "name": "@openade/fe",
   "version": "0.1.0",
   "description": "Fatturazione Elettronica - Electronic Invoicing for Sistema di Interscambio (SDI)",
   "main": "dist/index.js",
@@ -24,7 +24,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@nopos-ade/common": "file:../common",
+    "@openade/common": "file:../common",
     "ssh2": "^1.17.0"
   },
   "peerDependencies": {

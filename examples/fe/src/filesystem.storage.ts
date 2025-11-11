@@ -2,7 +2,7 @@
  * Filesystem Storage Implementation for FatturaPA
  */
 
-import type { IStorage } from '@nopos-ade/fe';
+import type { IStorage } from '@openade/fe';
 import { promises as fs } from 'fs';
 import { dirname, join } from 'path';
 

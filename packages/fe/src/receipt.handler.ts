@@ -9,7 +9,7 @@ import type {
   NotificaScarto,
   ReceiptType,
   RicevutaConsegna,
-} from '@nopos-ade/common';
+} from '@openade/common';
 import { XMLParser } from 'fast-xml-parser';
 
 /**

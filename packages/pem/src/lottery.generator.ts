@@ -3,7 +3,7 @@
  * Generates lottery codes for instant and deferred lottery
  */
 
-import type { LotteryCode, LotteryType } from '@nopos-ade/common';
+import type { LotteryCode, LotteryType } from '@openade/common';
 import { createHash, randomBytes } from 'crypto';
 
 export interface LotteryGeneratorConfig {

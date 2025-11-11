@@ -1,4 +1,4 @@
-# @nopos-ade/pel
+# @openade/pel
 
 Point of Elaboration (Punto di Elaborazione) server library for managing PEMs, communicating with ADE, and handling audits.
 
@@ -16,7 +16,7 @@ Point of Elaboration (Punto di Elaborazione) server library for managing PEMs, c
 ## Installation
 
 ```bash
-npm install @nopos-ade/pel @nopos-ade/common
+npm install @openade/pel @openade/common
 ```
 
 ## Quick Start
@@ -24,7 +24,7 @@ npm install @nopos-ade/pel @nopos-ade/common
 ### 1. Create PEL Server
 
 ```typescript
-import { PELServer } from '@nopos-ade/pel';
+import { PELServer } from '@openade/pel';
 
 const pelServer = new PELServer({
   port: 4000,
@@ -39,7 +39,7 @@ console.log('PEL Server started on port 4000');
 ### 2. Create Audit Server
 
 ```typescript
-import { AuditServer } from '@nopos-ade/pel';
+import { AuditServer } from '@openade/pel';
 
 const auditServer = new AuditServer({
   port: 3000,
@@ -54,7 +54,7 @@ console.log('Audit Server started on port 3000');
 ### 3. ADE API Client
 
 ```typescript
-import { ADEClient } from '@nopos-ade/pel';
+import { ADEClient } from '@openade/pel';
 
 const adeClient = new ADEClient({
   baseURL: 'https://test.agenziaentrate.gov.it/api',
@@ -74,7 +74,7 @@ const receiptsResult = await adeClient.sendDailyReceipts(receiptsData);
 The PEL server receives data from PEM devices:
 
 ```typescript
-import { PELServer } from '@nopos-ade/pel';
+import { PELServer } from '@openade/pel';
 
 const server = new PELServer({
   port: 4000,
@@ -103,7 +103,7 @@ await server.start();
 Handle asynchronous audit requests:
 
 ```typescript
-import { AuditServer, AuditRequestStatus } from '@nopos-ade/pel';
+import { AuditServer, AuditRequestStatus } from '@openade/pel';
 
 const auditServer = new AuditServer({
   port: 3000,
@@ -130,7 +130,7 @@ await auditServer.start();
 Poll for transmission outcomes from ADE:
 
 ```typescript
-import { OutcomePoller } from '@nopos-ade/pel';
+import { OutcomePoller } from '@openade/pel';
 
 const poller = new OutcomePoller({
   adeClient,
@@ -152,7 +152,7 @@ poller.on('outcomeReceived', (outcome) => {
 Manage and report anomalies:
 
 ```typescript
-import { AnomalyManager, AnomalyType } from '@nopos-ade/pel';
+import { AnomalyManager, AnomalyType } from '@openade/pel';
 
 const anomalyManager = new AnomalyManager({
   storage: myStorage,
@@ -179,7 +179,7 @@ const report = await anomalyManager.generateReport({
 Generate metadata for archives:
 
 ```typescript
-import { generateMetadataXML, createArchiveMetadata } from '@nopos-ade/pel';
+import { generateMetadataXML, createArchiveMetadata } from '@openade/pel';
 
 // Generate journal metadata
 const journalMetadata = generateMetadataXML({
@@ -211,7 +211,7 @@ const archiveMetadata = createArchiveMetadata({
 Implement `IStorage` for custom storage:
 
 ```typescript
-import { IStorage } from '@nopos-ade/pel';
+import { IStorage } from '@openade/pel';
 
 class MyStorage implements IStorage {
   async save(key: string, data: any): Promise<void> {
@@ -237,7 +237,7 @@ class MyStorage implements IStorage {
 Implement `IDatabase` for custom database:
 
 ```typescript
-import { IDatabase } from '@nopos-ade/pel';
+import { IDatabase } from '@openade/pel';
 
 class MyDatabase implements IDatabase {
   async query<T>(filter: QueryFilter): Promise<QueryResult<T>> {
@@ -259,7 +259,7 @@ class MyDatabase implements IDatabase {
 Implement `IConservation` for document conservation:
 
 ```typescript
-import { IConservation } from '@nopos-ade/pel';
+import { IConservation } from '@openade/pel';
 
 class MyConservation implements IConservation {
   async conserveDocuments(documents: DocumentoCommerciale[]): Promise<ConservationPackage> {

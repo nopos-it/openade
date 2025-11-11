@@ -2,7 +2,7 @@
  * Metadata Builder Tests
  */
 
-import type { DocumentoCommerciale, Journal } from '@nopos-ade/common';
+import type { DocumentoCommerciale, Journal } from '@openade/common';
 import { createArchiveMetadata, generateMetadataXML } from '../src/metadata.builder';
 
 describe('MetadataBuilder', () => {

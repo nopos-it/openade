@@ -7,7 +7,7 @@
  * Implementations can use any database (PostgreSQL, MongoDB, SQLite, etc.)
  */
 
-import type { FatturaElettronica } from '@nopos-ade/common';
+import type { FatturaElettronica } from '@openade/common';
 
 /**
  * Query filters for searching records

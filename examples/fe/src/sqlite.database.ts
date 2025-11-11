@@ -9,7 +9,7 @@ import type {
   QueryFilter,
   QueryResult,
   ReceiptRecord,
-} from '@nopos-ade/fe';
+} from '@openade/fe';
 import { promises as fs } from 'fs';
 import { join } from 'path';
 

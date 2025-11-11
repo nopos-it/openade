@@ -11,7 +11,7 @@ import type {
   FatturaElettronica,
   FatturaElettronicaBody,
   FatturaElettronicaHeader,
-} from '@nopos-ade/common';
+} from '@openade/common';
 
 export interface InvoiceBuilderConfig {
   /** Supplier VAT number */

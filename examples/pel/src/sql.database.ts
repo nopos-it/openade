@@ -12,8 +12,8 @@ import type {
   EmissionPointCensus,
   EmissionPointStatusInfo,
   Journal,
-} from '@nopos-ade/common';
-import type { AuditLogEntry, IDatabase, QueryFilter, QueryResult } from '@nopos-ade/pel';
+} from '@openade/common';
+import type { AuditLogEntry, IDatabase, QueryFilter, QueryResult } from '@openade/pel';
 import type sqlite3 from 'sqlite3';
 import { promisify } from 'util';
 

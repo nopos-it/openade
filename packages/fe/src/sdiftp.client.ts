@@ -3,7 +3,7 @@
  * SFTP client for SDI transmission
  */
 
-import type { InvoiceTransmissionResult } from '@nopos-ade/common';
+import type { InvoiceTransmissionResult } from '@openade/common';
 import { Client } from 'ssh2';
 
 export interface SDIFTPConfig {
