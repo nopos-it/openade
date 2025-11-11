@@ -1,18 +1,17 @@
-name: Publish to NPM
+name: Publish
 
 on:
   release:
-    types: [published]
+    types: [created]
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version to publish (e.g., 0.1.0)'
+        description: 'Version to publish (e.g., 1.0.0)'
         required: true
         type: string
 
 jobs:
   publish:
-    name: Publish Packages
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -24,34 +23,35 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
+          node-version: '22.x'
           registry-url: 'https://registry.npmjs.org'
           cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build all packages
+      - name: Build
         run: npm run build
 
-      - name: Run tests
-        run: npm test
+      - name: Test
+        run: npm run test
 
-      - name: Publish @openade/common
-        working-directory: ./packages/common
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Publish @openade/pem
-        working-directory: ./packages/pem
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Publish @openade/pel
-        working-directory: ./packages/pel
-        run: npm publish --access public
+      - name: Publish to npm
+        run: |
+          if [ "${{ github.event_name }}" == "release" ]; then
+            VERSION="${{ github.event.release.tag_name }}"
+          else
+            VERSION="${{ github.event.inputs.version }}"
+          fi
+          
+          # Update version in all packages
+          npm version $VERSION --workspaces --no-git-tag-version
+          
+          # Publish each package
+          npm publish --workspace=packages/common --access public
+          npm publish --workspace=packages/pem --access public
+          npm publish --workspace=packages/pel --access public
+          npm publish --workspace=packages/fe --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 

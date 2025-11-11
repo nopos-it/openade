@@ -97,7 +97,7 @@ export class SignatureManager {
         certificate,
         algorithm
       );
-    } catch (error) {
+    } catch {
       return false;
     }
   }

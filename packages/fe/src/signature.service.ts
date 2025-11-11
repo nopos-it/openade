@@ -157,7 +157,7 @@ export class SignatureService {
   /**
    * Get certificate information
    */
-  async getCertificateInfo(certificate: string): Promise<{
+  async getCertificateInfo(_certificate: string): Promise<{
     subject: string;
     issuer: string;
     validFrom: Date;

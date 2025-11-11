@@ -402,7 +402,7 @@ export class CrossBorderManager {
       AT: /^ATU\d{8}$/,
       PT: /^PT\d{9}$/,
       FI: /^FI\d{8}$/,
-      IE: /^IE\d[A-Z0-9\+\*]\d{5}[A-Z]$/,
+      IE: /^IE\d[A-Z0-9+*]\d{5}[A-Z]$/,
       GR: /^GR\d{9}$/,
       LU: /^LU\d{8}$/,
       MT: /^MT\d{8}$/,

@@ -85,7 +85,7 @@ export class EUVATService {
       FR: /^FR[A-HJ-NP-Z0-9]{2}\d{9}$/,
       HR: /^HR\d{11}$/,
       HU: /^HU\d{8}$/,
-      IE: /^IE\d[A-Z0-9\+\*]\d{5}[A-Z]$/,
+      IE: /^IE\d[A-Z0-9+*]\d{5}[A-Z]$/,
       IT: /^IT\d{11}$/,
       LT: /^LT(\d{9}|\d{12})$/,
       LU: /^LU\d{8}$/,

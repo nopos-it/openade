@@ -227,8 +227,8 @@ export class BatchProcessor {
    */
   private async processSingleBatch(
     items: BatchItem[],
-    batchNumber: number,
-    totalBatches: number
+    _batchNumber: number,
+    _totalBatches: number
   ): Promise<BatchResult['results']> {
     const results: BatchResult['results'] = [];
 

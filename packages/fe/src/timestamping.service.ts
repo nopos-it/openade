@@ -34,7 +34,7 @@ export class TSAService {
   /**
    * Request timestamp from TSA
    */
-  async requestTimestamp(contentHash: string, contentType?: string): Promise<TimestampResult> {
+  async requestTimestamp(contentHash: string, _contentType?: string): Promise<TimestampResult> {
     try {
       // Create timestamp request
       const timestampRequest = await this.asn1Service.createTimestampRequest(contentHash);
@@ -88,7 +88,7 @@ export class TSAService {
   /**
    * Verify timestamp token
    */
-  async verifyTimestamp(timestampToken: string, expectedContent: string): Promise<boolean> {
+  async verifyTimestamp(timestampToken: string, _expectedContent: string): Promise<boolean> {
     try {
       // In a real implementation, this would verify the timestamp token
       // against the expected content using cryptographic verification

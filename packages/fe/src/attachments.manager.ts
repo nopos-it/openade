@@ -195,7 +195,7 @@ export class AttachmentManager {
   async getAttachment(id: string): Promise<Attachment | null> {
     try {
       return await this.loadAttachment(id);
-    } catch (error) {
+    } catch {
       return null;
     }
   }
@@ -206,7 +206,7 @@ export class AttachmentManager {
   async removeAttachment(id: string): Promise<boolean> {
     try {
       return await this.deleteAttachment(id);
-    } catch (error) {
+    } catch {
       return false;
     }
   }
@@ -217,7 +217,7 @@ export class AttachmentManager {
   async listAttachments(): Promise<Attachment[]> {
     try {
       return await this.listStoredAttachments();
-    } catch (error) {
+    } catch {
       return [];
     }
   }
@@ -311,7 +311,7 @@ export class AttachmentManager {
       }
 
       return JSON.parse(Buffer.from(content).toString('utf8')) as Attachment;
-    } catch (error) {
+    } catch {
       return null;
     }
   }
@@ -324,7 +324,7 @@ export class AttachmentManager {
       const filePath = `${this.config.storageDir || 'attachments'}/${id}.json`;
       await this.config.fileStorage.delete(filePath);
       return true;
-    } catch (error) {
+    } catch {
       return false;
     }
   }
@@ -348,7 +348,7 @@ export class AttachmentManager {
       }
 
       return attachments;
-    } catch (error) {
+    } catch {
       return [];
     }
   }

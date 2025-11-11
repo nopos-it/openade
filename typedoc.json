@@ -1,0 +1,14 @@
+{
+  "entryPoints": [
+    "packages/common/src/index.ts",
+    "packages/pem/src/index.ts",
+    "packages/pel/src/index.ts",
+    "packages/fe/src/index.ts"
+  ],
+  "out": "docs",
+  "name": "OpenADE Documentation",
+  "readme": "README.md",
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeInternal": true
+}

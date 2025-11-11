@@ -153,7 +153,7 @@ export class AuditServer {
         });
 
         res.status(200).json({ idPresaInCarico });
-      } catch (error) {
+      } catch {
         res.status(500).json({
           anomalie: [{ codice: 'ERR_INTERNAL', descrizione: 'Errore non previsto' }],
         });
@@ -231,7 +231,7 @@ export class AuditServer {
           res.setHeader('Content-Type', 'application/octet-stream');
           res.setHeader('Content-Disposition', `attachment; filename="${req.params.nomeFile}"`);
           res.send(fileData);
-        } catch (error) {
+        } catch {
           res.status(500).json({
             anomalie: [{ codice: 'ERR_INTERNAL', descrizione: 'Errore non previsto' }],
           });
@@ -279,7 +279,7 @@ export class AuditServer {
         });
 
         res.status(200).json({ idPresaInCarico });
-      } catch (error) {
+      } catch {
         res.status(500).json({
           anomalie: [{ codice: 'ERR_INTERNAL', descrizione: 'Errore non previsto' }],
         });
@@ -357,7 +357,7 @@ export class AuditServer {
           res.setHeader('Content-Type', 'application/octet-stream');
           res.setHeader('Content-Disposition', `attachment; filename="${req.params.nomeFile}"`);
           res.send(fileData);
-        } catch (error) {
+        } catch {
           res.status(500).json({
             anomalie: [{ codice: 'ERR_INTERNAL', descrizione: 'Errore non previsto' }],
           });
@@ -416,7 +416,7 @@ export class AuditServer {
       }
 
       // Create ZIP archive name
-      const zipFileName = `journal_audit_${job.id}.zip`;
+      // const zipFileName = `journal_audit_${job.id}.zip`; // Reserved for future use
 
       // In production, you would:
       // 1. Use a ZIP library to compress all XML files

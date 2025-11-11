@@ -1,93 +1,93 @@
-# FE Example - Fatturazione Elettronica (Electronic Invoicing)
+# Esempio FE - Fatturazione Elettronica
 
-This comprehensive example demonstrates all features of the `@openade/fe` package for creating and managing electronic invoices (FatturaPA) for the Italian tax authority's Sistema di Interscambio (SDI).
+Questo esempio completo dimostra tutte le funzionalità del pacchetto `@openade/fe` per creare e gestire fatture elettroniche (FatturaPA) per il Sistema di Interscambio (SDI) dell'Agenzia delle Entrate italiana.
 
-## Features Demonstrated
+## Funzionalità Dimostrate
 
-- **Invoice Creation**: Build FatturaPA XML invoices (FPR12 format) for B2B and B2C
-- **Digital Signatures**: Apply digital signatures to invoices
-- **Timestamping**: Add trusted timestamps to invoices
-- **Attachment Management**: Handle file attachments with compression/encryption
-- **Cross-Border Support**: EU VAT validation and international invoice handling
-- **SDI Transmission**: Send invoices via SDICOOP and SDIFTP channels
-- **Archive Management**: Long-term storage with retention policies
-- **Audit Trails**: Comprehensive logging and compliance tracking
-- **Batch Processing**: High-volume invoice processing
-- **Storage Abstraction**: Flexible storage backends (file system, database, cache)
+- **Creazione Fatture**: Costruisci fatture XML FatturaPA (formato FPR12) per B2B e B2C
+- **Firme Digitali**: Applica firme digitali alle fatture
+- **Marcatura Temporale**: Aggiungi timestamp certificati alle fatture
+- **Gestione Allegati**: Gestisci allegati con compressione/cifratura
+- **Supporto Transfrontaliero**: Validazione IVA UE e gestione fatture internazionali
+- **Trasmissione SDI**: Invia fatture via canali SDICOOP e SDIFTP
+- **Gestione Archivi**: Archiviazione a lungo termine con politiche di conservazione
+- **Tracciamento Audit**: Logging completo e tracciamento conformità
+- **Elaborazione Batch**: Elaborazione ad alto volume di fatture
+- **Astrazione Storage**: Backend storage flessibili (file system, database, cache)
 
-## Installation
+## Installazione
 
 ```bash
 npm install
 ```
 
-## Run Example
+## Esegui Esempio
 
 ```bash
 npm start
 ```
 
-## What the Example Shows
+## Cosa Mostra l'Esempio
 
-The example demonstrates a complete workflow:
+L'esempio dimostra un workflow completo:
 
-1. **Invoice Creation**: Build a FatturaPA invoice with multiple line items
-2. **Digital Signature**: Apply digital signature (mock implementation)
-3. **Timestamping**: Add trusted timestamp (mock TSA service)
-4. **Attachment Management**: Handle file attachments with compression
-5. **Cross-Border Validation**: Validate EU VAT numbers and international invoices
-6. **SDI Transmission**: Send invoices via SDICOOP web service
-7. **Archive Management**: Store invoices with retention policies
-8. **Audit Trails**: Log all operations for compliance
-9. **Batch Processing**: Process multiple invoices efficiently
+1. **Creazione Fattura**: Costruisci una fattura FatturaPA con più righe
+2. **Firma Digitale**: Applica firma digitale (implementazione mock)
+3. **Marcatura Temporale**: Aggiungi timestamp certificato (servizio TSA mock)
+4. **Gestione Allegati**: Gestisci allegati con compressione
+5. **Validazione Transfrontaliera**: Valida partite IVA UE e fatture internazionali
+6. **Trasmissione SDI**: Invia fatture via web service SDICOOP
+7. **Gestione Archivi**: Archivia fatture con politiche di conservazione
+8. **Tracciamento Audit**: Registra tutte le operazioni per conformità
+9. **Elaborazione Batch**: Elabora più fatture efficientemente
 
-## Storage Abstraction
+## Astrazione Storage
 
-The example uses in-memory storage implementations that can be easily replaced with:
+L'esempio utilizza implementazioni storage in-memory che possono essere facilmente sostituite con:
 
-- **File Storage**: Local filesystem, S3, Azure Blob, Google Cloud Storage
-- **Database**: MySQL, PostgreSQL, MongoDB, etc.
+- **File Storage**: Filesystem locale, S3, Azure Blob, Google Cloud Storage
+- **Database**: MySQL, PostgreSQL, MongoDB, ecc.
 - **Cache**: Redis, Memcached, in-memory
 
-## Service Architecture
+## Architettura Servizi
 
-All processing services are built into the FE package:
+Tutti i servizi di elaborazione sono integrati nel pacchetto FE:
 
-- **Compression**: Node.js zlib-based compression
-- **Encryption**: Node.js crypto-based encryption
-- **HTTP Client**: Node.js fetch-based HTTP requests
-- **XML Processing**: fast-xml-parser for XML operations
-- **Digital Signatures**: Node.js crypto-based signatures
-- **Timestamping**: TSA integration with ASN.1 encoding
-- **EU VAT Validation**: VIES service integration
+- **Compressione**: Compressione basata su zlib di Node.js
+- **Cifratura**: Cifratura basata su crypto di Node.js
+- **Client HTTP**: Richieste HTTP basate su fetch di Node.js
+- **Elaborazione XML**: fast-xml-parser per operazioni XML
+- **Firme Digitali**: Firme basate su crypto di Node.js
+- **Marcatura Temporale**: Integrazione TSA con codifica ASN.1
+- **Validazione IVA UE**: Integrazione servizio VIES
 
-## Invoice Types
+## Tipi Fattura
 
-- **TD01**: Standard invoice
-- **TD04**: Credit note
-- **TD05**: Debit note
-- **TD01-TD28**: Various document types per Italian tax regulations
+- **TD01**: Fattura standard
+- **TD04**: Nota di credito
+- **TD05**: Nota di debito
+- **TD01-TD28**: Vari tipi documento secondo regolamenti fiscali italiani
 
-## Transmission Channels
+## Canali di Trasmissione
 
-- **SDICOOP**: Web service (SOAP) - Recommended for most cases
-- **SDIFTP**: SFTP transmission - For high-volume scenarios
+- **SDICOOP**: Web service (SOAP) - Consigliato per la maggior parte dei casi
+- **SDIFTP**: Trasmissione SFTP - Per scenari ad alto volume
 
-## Receipt Types
+## Tipi Ricevuta
 
-- **RC**: Delivery receipt (Ricevuta di Consegna)
-- **NS**: Rejection notice (Notifica di Scarto)
-- **MC**: Undelivered notice (Notifica di Mancata Consegna)
-- **NE**: Outcome notice (Notifica Esito)
-- **MT**: Invoice metadata (Metadati Fattura)
-- **DT**: Transmission attestation with delivery failure
+- **RC**: Ricevuta di Consegna
+- **NS**: Notifica di Scarto
+- **MC**: Notifica di Mancata Consegna
+- **NE**: Notifica Esito
+- **MT**: Metadati Fattura
+- **DT**: Attestazione trasmissione con mancata consegna
 
-## Production Notes
+## Note Produzione
 
-- **SDI Credentials**: Obtain proper SDI credentials and certificates for production
-- **Test Environment**: Always test with SDI test environment first
-- **File Size Limit**: Maximum file size is 5MB
-- **Processing Time**: Invoices are typically processed within 5 days by SDI
-- **Storage**: Replace in-memory storage with production storage solutions
-- **Certificates**: Use real digital certificates for production signatures
-- **TSA Service**: Configure real TSA service for production timestamping
+- **Credenziali SDI**: Ottieni credenziali e certificati SDI appropriati per la produzione
+- **Ambiente Test**: Testa sempre prima con l'ambiente test SDI
+- **Limite Dimensione File**: La dimensione massima del file è 5MB
+- **Tempo Elaborazione**: Le fatture sono tipicamente elaborate entro 5 giorni da SDI
+- **Storage**: Sostituisci storage in-memory con soluzioni storage di produzione
+- **Certificati**: Usa certificati digitali reali per firme di produzione
+- **Servizio TSA**: Configura servizio TSA reale per marcatura temporale di produzione

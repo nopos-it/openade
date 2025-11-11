@@ -146,7 +146,7 @@ export class PEMManager {
             try {
               await this.pelClient.sendDocument(doc);
               console.log(`  ✓ Synced ${doc.datiGenerali.numero}`);
-            } catch (error) {
+            } catch {
               console.error(`  ✗ Failed to sync ${doc.datiGenerali.numero}`);
             }
           }

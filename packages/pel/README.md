@@ -1,27 +1,27 @@
 # @openade/pel
 
-Point of Elaboration (Punto di Elaborazione) server library for managing PEMs, communicating with ADE, and handling audits.
+Libreria server Punto di Elaborazione per gestire PEM, comunicare con ADE e gestire audit.
 
-## Features
+## Funzionalità
 
-- 🖥️ PEL server for receiving data from PEM devices
-- 🔍 Audit server for asynchronous audit requests
-- 🌐 ADE API client for transmission to Agenzia delle Entrate
-- 📊 Outcome polling from ADE
-- 🚨 Anomaly management and reporting
-- 📋 Metadata generation for archives
-- 💾 Flexible storage and database interfaces
-- 🔄 Real-time PEM synchronization
+- 🖥️ Server PEL per ricevere dati da dispositivi PEM
+- 🔍 Server audit per richieste audit asincrone
+- 🌐 Client API ADE per trasmissione ad Agenzia delle Entrate
+- 📊 Polling esiti da ADE
+- 🚨 Gestione e segnalazione anomalie
+- 📋 Generazione metadati per archivi
+- 💾 Interfacce storage e database flessibili
+- 🔄 Sincronizzazione PEM in tempo reale
 
-## Installation
+## Installazione
 
 ```bash
 npm install @openade/pel @openade/common
 ```
 
-## Quick Start
+## Guida Rapida
 
-### 1. Create PEL Server
+### 1. Crea Server PEL
 
 ```typescript
 import { PELServer } from '@openade/pel';
@@ -33,10 +33,10 @@ const pelServer = new PELServer({
 });
 
 await pelServer.start();
-console.log('PEL Server started on port 4000');
+console.log('Server PEL avviato sulla porta 4000');
 ```
 
-### 2. Create Audit Server
+### 2. Crea Server Audit
 
 ```typescript
 import { AuditServer } from '@openade/pel';
@@ -48,10 +48,10 @@ const auditServer = new AuditServer({
 });
 
 await auditServer.start();
-console.log('Audit Server started on port 3000');
+console.log('Server Audit avviato sulla porta 3000');
 ```
 
-### 3. ADE API Client
+### 3. Client API ADE
 
 ```typescript
 import { ADEClient } from '@openade/pel';
@@ -62,16 +62,16 @@ const adeClient = new ADEClient({
   debug: true,
 });
 
-// Send emission point census
+// Invia censimento punto emissione
 const censusResult = await adeClient.sendEmissionPointCensus(censusData);
 
-// Send daily receipts
+// Invia scontrini giornalieri
 const receiptsResult = await adeClient.sendDailyReceipts(receiptsData);
 ```
 
-## PEL Server
+## Server PEL
 
-The PEL server receives data from PEM devices:
+Il server PEL riceve dati da dispositivi PEM:
 
 ```typescript
 import { PELServer } from '@openade/pel';
@@ -86,21 +86,21 @@ const server = new PELServer({
   },
 });
 
-// Handle PEM connections
+// Gestisci connessioni PEM
 server.on('pemConnected', (pemId) => {
-  console.log(`PEM ${pemId} connected`);
+  console.log(`PEM ${pemId} connesso`);
 });
 
 server.on('documentReceived', (document) => {
-  console.log('Document received:', document.number);
+  console.log('Documento ricevuto:', document.number);
 });
 
 await server.start();
 ```
 
-## Audit Server
+## Server Audit
 
-Handle asynchronous audit requests:
+Gestisci richieste audit asincrone:
 
 ```typescript
 import { AuditServer, AuditRequestStatus } from '@openade/pel';
@@ -111,23 +111,23 @@ const auditServer = new AuditServer({
   database: myDatabase,
 });
 
-// Handle audit requests
+// Gestisci richieste audit
 auditServer.on('auditRequest', async (request) => {
-  console.log('Audit request received:', request.id);
+  console.log('Richiesta audit ricevuta:', request.id);
 
-  // Process audit request
+  // Elabora richiesta audit
   const result = await processAuditRequest(request);
 
-  // Update status
+  // Aggiorna stato
   await auditServer.updateRequestStatus(request.id, AuditRequestStatus.COMPLETED);
 });
 
 await auditServer.start();
 ```
 
-## Outcome Poller
+## Poller Esiti
 
-Poll for transmission outcomes from ADE:
+Esegui polling per esiti trasmissione da ADE:
 
 ```typescript
 import { OutcomePoller } from '@openade/pel';
@@ -135,21 +135,21 @@ import { OutcomePoller } from '@openade/pel';
 const poller = new OutcomePoller({
   adeClient,
   database: myDatabase,
-  pollInterval: 30000, // 30 seconds
+  pollInterval: 30000, // 30 secondi
 });
 
-// Start polling
+// Avvia polling
 await poller.start();
 
-// Handle outcomes
+// Gestisci esiti
 poller.on('outcomeReceived', (outcome) => {
-  console.log('Outcome received:', outcome.transmissionId);
+  console.log('Esito ricevuto:', outcome.transmissionId);
 });
 ```
 
-## Anomaly Manager
+## Gestore Anomalie
 
-Manage and report anomalies:
+Gestisci e segnala anomalie:
 
 ```typescript
 import { AnomalyManager, AnomalyType } from '@openade/pel';
@@ -159,29 +159,29 @@ const anomalyManager = new AnomalyManager({
   database: myDatabase,
 });
 
-// Report anomaly
+// Segnala anomalia
 await anomalyManager.reportAnomaly({
   type: AnomalyType.TRANSMISSION_FAILURE,
-  description: 'Failed to transmit to ADE',
-  details: { error: 'Network timeout' },
+  description: 'Trasmissione ad ADE fallita',
+  details: { error: 'Timeout di rete' },
   timestamp: new Date(),
 });
 
-// Get anomaly report
+// Ottieni report anomalie
 const report = await anomalyManager.generateReport({
   fromDate: new Date('2024-01-01'),
   toDate: new Date('2024-01-31'),
 });
 ```
 
-## Metadata Builder
+## Costruttore Metadati
 
-Generate metadata for archives:
+Genera metadati per archivi:
 
 ```typescript
 import { generateMetadataXML, createArchiveMetadata } from '@openade/pel';
 
-// Generate journal metadata
+// Genera metadati registro
 const journalMetadata = generateMetadataXML({
   type: 'journal',
   period: {
@@ -191,7 +191,7 @@ const journalMetadata = generateMetadataXML({
   documents: journalEntries,
 });
 
-// Create archive metadata
+// Crea metadati archivio
 const archiveMetadata = createArchiveMetadata({
   archiveId: 'ARCH-2024-001',
   period: {
@@ -206,77 +206,77 @@ const archiveMetadata = createArchiveMetadata({
 });
 ```
 
-## Storage Interface
+## Interfaccia Storage
 
-Implement `IStorage` for custom storage:
+Implementa `IStorage` per storage personalizzato:
 
 ```typescript
 import { IStorage } from '@openade/pel';
 
 class MyStorage implements IStorage {
   async save(key: string, data: any): Promise<void> {
-    // Save data
+    // Salva dati
   }
 
   async load(key: string): Promise<any> {
-    // Load data
+    // Carica dati
   }
 
   async delete(key: string): Promise<void> {
-    // Delete data
+    // Elimina dati
   }
 
   async list(prefix?: string): Promise<string[]> {
-    // List keys
+    // Elenca chiavi
   }
 }
 ```
 
-## Database Interface
+## Interfaccia Database
 
-Implement `IDatabase` for custom database:
+Implementa `IDatabase` per database personalizzato:
 
 ```typescript
 import { IDatabase } from '@openade/pel';
 
 class MyDatabase implements IDatabase {
   async query<T>(filter: QueryFilter): Promise<QueryResult<T>> {
-    // Query database
+    // Interroga database
   }
 
   async saveAuditLog(entry: AuditLogEntry): Promise<void> {
-    // Save audit log
+    // Salva log audit
   }
 
   async getAuditLogs(filter: QueryFilter): Promise<QueryResult<AuditLogEntry>> {
-    // Get audit logs
+    // Ottieni log audit
   }
 }
 ```
 
-## Conservation Interface
+## Interfaccia Conservazione
 
-Implement `IConservation` for document conservation:
+Implementa `IConservation` per conservazione documenti:
 
 ```typescript
 import { IConservation } from '@openade/pel';
 
 class MyConservation implements IConservation {
   async conserveDocuments(documents: DocumentoCommerciale[]): Promise<ConservationPackage> {
-    // Conserve documents
+    // Conserva documenti
   }
 
   async conserveJournals(journals: Journal[]): Promise<ConservationPackage> {
-    // Conserve journals
+    // Conserva registri
   }
 
   async getConservationStats(filter: ConservationFilter): Promise<ConservationStats> {
-    // Get conservation statistics
+    // Ottieni statistiche conservazione
   }
 }
 ```
 
-## API Reference
+## Riferimento API
 
 ### PELServer
 
@@ -313,22 +313,22 @@ class ADEClient {
 }
 ```
 
-## Examples
+## Esempi
 
-See `examples/pel/` for complete working examples.
+Vedi `examples/pel/` per esempi completi funzionanti.
 
-## Specifications
+## Specifiche
 
-Based on:
+Basato su:
 
-- SSW (Soluzione Software) v1.1 specifications
-- Agenzia delle Entrate REST API documentation
-- Italian fiscal regulations
+- Specifiche SSW (Soluzione Software) v1.1
+- Documentazione API REST Agenzia delle Entrate
+- Regolamenti fiscali italiani
 
-## License
+## Licenza
 
 MIT
 
 ## Disclaimer
 
-This library is not affiliated with Agenzia delle Entrate. Use at your own risk.
+Questa libreria non è affiliata con l'Agenzia delle Entrate. Utilizzare a proprio rischio.

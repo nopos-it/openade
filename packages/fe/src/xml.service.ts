@@ -45,7 +45,7 @@ export class XmlService {
   /**
    * Convert object to XML string
    */
-  async stringify(obj: any, options?: any): Promise<string> {
+  async stringify(obj: any, _options?: any): Promise<string> {
     try {
       return this.builder.build(obj);
     } catch (error) {
@@ -58,7 +58,7 @@ export class XmlService {
   /**
    * Validate XML against schema (basic validation)
    */
-  async validate(xml: string, schema: string): Promise<{ valid: boolean; errors: string[] }> {
+  async validate(xml: string, _schema: string): Promise<{ valid: boolean; errors: string[] }> {
     const errors: string[] = [];
 
     try {

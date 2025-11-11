@@ -1,26 +1,26 @@
 # @openade/fe
 
-Electronic Invoicing (Fatturazione Elettronica) library for Italian SDI (Sistema di Interscambio).
+Libreria per Fatturazione Elettronica per SDI (Sistema di Interscambio) italiano.
 
-## Features
+## Funzionalità
 
-- 📄 FatturaPA XML generation (FPR12/FPA12 formats)
-- 🧾 Invoice builder with automatic VAT calculation
-- 📤 SDI transmission via SDICOOP/SDIFTP
-- 📨 Receipt handler (RC, NS, MC, NE, MT, DT)
-- 🏢 Support for B2B and B2C invoices
-- 📋 Multiple document types (TD01-TD28)
-- ✅ Compliant with FatturaPA v1.9 specifications
+- 📄 Generazione XML FatturaPA (formati FPR12/FPA12)
+- 🧾 Costruttore fatture con calcolo IVA automatico
+- 📤 Trasmissione SDI via SDICOOP/SDIFTP
+- 📨 Gestore ricevute (RC, NS, MC, NE, MT, DT)
+- 🏢 Supporto fatture B2B e B2C
+- 📋 Tipi documento multipli (TD01-TD28)
+- ✅ Conforme alle specifiche FatturaPA v1.9
 
-## Installation
+## Installazione
 
 ```bash
 npm install @openade/fe @openade/common
 ```
 
-## Quick Start
+## Guida Rapida
 
-### 1. Create Invoice Builder
+### 1. Crea Costruttore Fatture
 
 ```typescript
 import { InvoiceBuilder } from '@openade/fe';
@@ -39,7 +39,7 @@ const builder = new InvoiceBuilder({
 });
 ```
 
-### 2. Build Invoice
+### 2. Costruisci Fattura
 
 ```typescript
 const invoice = builder.build({
@@ -59,17 +59,17 @@ const invoice = builder.build({
   invoiceDate: '2024-01-15',
   lines: [
     {
-      description: 'Professional service',
+      description: 'Servizio professionale',
       quantity: 1,
       unitPrice: 1000.0,
       vatRate: 22,
     },
   ],
-  paymentMethod: 'MP05', // Bank transfer
+  paymentMethod: 'MP05', // Bonifico bancario
 });
 ```
 
-### 3. Generate XML
+### 3. Genera XML
 
 ```typescript
 import { buildInvoiceXML } from '@openade/fe';
@@ -78,9 +78,9 @@ const xml = buildInvoiceXML(invoice);
 const filename = builder.generateFilename(); // IT12345678901_00001.xml
 ```
 
-### 4. Transmit to SDI
+### 4. Trasmetti a SDI
 
-#### SDICOOP (Web Service) - Recommended
+#### SDICOOP (Web Service) - Consigliato
 
 ```typescript
 import { SDIClient } from '@openade/fe';
@@ -98,7 +98,7 @@ if (result.success) {
 }
 ```
 
-#### SDIFTP (SFTP) - For High Volume
+#### SDIFTP (SFTP) - Per Volumi Elevati
 
 ```typescript
 const sdiClient = new SDIClient({
@@ -107,7 +107,7 @@ const sdiClient = new SDIClient({
     host: 'sdi.gov.it',
     port: 22,
     username: 'your-username',
-    privateKey: 'your-private-key', // or password: 'your-password'
+    privateKey: 'your-private-key', // oppure password: 'your-password'
     uploadDir: '/in',
     downloadDir: '/out',
   },
@@ -116,15 +116,15 @@ const sdiClient = new SDIClient({
 const result = await sdiClient.sendInvoice(filename, xml, 'SDIFTP');
 
 if (result.success) {
-  console.log('Invoice uploaded successfully!');
+  console.log('Fattura caricata con successo!');
 
-  // Check for receipts later
+  // Controlla ricevute in seguito
   const receipts = await sdiClient.listReceipts();
   const allReceipts = await sdiClient.downloadAllReceipts();
 }
 ```
 
-### 5. Handle Receipts
+### 5. Gestisci Ricevute
 
 ```typescript
 import { ReceiptHandler } from '@openade/fe';
@@ -133,90 +133,90 @@ const receiptHandler = new ReceiptHandler();
 const receipt = receiptHandler.parseReceipt(receiptXml);
 
 if (receiptHandler.isSuccessReceipt(receipt)) {
-  console.log('Invoice delivered!');
+  console.log('Fattura consegnata!');
 } else {
   const errors = receiptHandler.getErrors(receipt);
-  console.error('Errors:', errors);
+  console.error('Errori:', errors);
 }
 ```
 
-## Invoice Types (TipoDocumento)
+## Tipi Fattura (TipoDocumento)
 
-- **TD01**: Standard invoice
-- **TD04**: Credit note
-- **TD05**: Debit note
-- **TD06**: Fee
-- **TD16-TD28**: Various special document types
+- **TD01**: Fattura standard
+- **TD04**: Nota di credito
+- **TD05**: Nota di debito
+- **TD06**: Parcella
+- **TD16-TD28**: Vari tipi documento speciali
 
-## Transmission Channels
+## Canali di Trasmissione
 
-- **SDICOOP**: Web service (SOAP) - recommended for most cases
-  - Real-time communication with immediate response
-  - Best for moderate volumes (up to ~1000 invoices/day)
-  - Immediate `IdentificativoSdI` response
-  - Simpler error handling
+- **SDICOOP**: Web service (SOAP) - consigliato per la maggior parte dei casi
+  - Comunicazione in tempo reale con risposta immediata
+  - Ideale per volumi moderati (fino a ~1000 fatture/giorno)
+  - Risposta immediata `IdentificativoSdI`
+  - Gestione errori più semplice
 
-- **SDIFTP**: SFTP transmission - for high-volume scenarios
-  - Asynchronous batch processing
-  - Best for high volumes (1000+ invoices/day)
-  - Requires SFTP server configuration
-  - Receipts downloaded separately
+- **SDIFTP**: Trasmissione SFTP - per scenari ad alto volume
+  - Elaborazione batch asincrona
+  - Ideale per volumi elevati (1000+ fatture/giorno)
+  - Richiede configurazione server SFTP
+  - Ricevute scaricate separatamente
 
-## Receipt Types
+## Tipi Ricevuta
 
-- **RC**: Delivery receipt (Ricevuta di Consegna)
-- **NS**: Rejection notice (Notifica di Scarto)
-- **MC**: Undelivered notice (Notifica di Mancata Consegna)
-- **NE**: Outcome notice (Notifica Esito - EC01/EC02)
-- **MT**: Invoice metadata (Metadati Fattura)
-- **DT**: Transmission attestation with delivery failure
+- **RC**: Ricevuta di Consegna
+- **NS**: Notifica di Scarto
+- **MC**: Notifica di Mancata Consegna
+- **NE**: Notifica Esito (EC01/EC02)
+- **MT**: Metadati Fattura
+- **DT**: Attestazione trasmissione con mancata consegna
 
-## Storage Interface
+## Interfaccia Storage
 
-Implement `IFEStorage` for custom storage:
+Implementa `IFEStorage` per storage personalizzato:
 
 ```typescript
 import { IFEStorage } from '@openade/fe';
 
 class MyStorage implements IFEStorage {
   async saveInvoice(filename: string, xml: string): Promise<void> {
-    // Save invoice XML
+    // Salva XML fattura
   }
 
   async loadInvoice(filename: string): Promise<string | null> {
-    // Load invoice XML
+    // Carica XML fattura
   }
 
   async saveReceipt(filename: string, xml: string): Promise<void> {
-    // Save receipt XML
+    // Salva XML ricevuta
   }
 
   async loadReceipt(filename: string): Promise<string | null> {
-    // Load receipt XML
+    // Carica XML ricevuta
   }
 
   async listInvoices(): Promise<string[]> {
-    // List all invoices
+    // Elenca tutte le fatture
   }
 
   async listReceipts(): Promise<string[]> {
-    // List all receipts
+    // Elenca tutte le ricevute
   }
 }
 ```
 
-## Payment Methods (ModalitaPagamento)
+## Metodi di Pagamento (ModalitaPagamento)
 
-- **MP01**: Cash
-- **MP02**: Check
-- **MP03**: Banker's draft
-- **MP04**: Cash at treasury
-- **MP05**: Bank transfer
-- **MP08**: Payment card
+- **MP01**: Contanti
+- **MP02**: Assegno
+- **MP03**: Assegno circolare
+- **MP04**: Contanti presso Tesoreria
+- **MP05**: Bonifico bancario
+- **MP08**: Carta di pagamento
 - **MP12**: RIBA
-- ... and more
+- ... e altri
 
-## API Reference
+## Riferimento API
 
 ### InvoiceBuilder
 
@@ -242,8 +242,8 @@ class SDIClient {
   ): Promise<InvoiceTransmissionResult>;
   queryInvoiceStatus(identifcativoSdI: string): Promise<{ status: string; details?: string }>;
   downloadReceipt(identifcativoSdI: string): Promise<string | null>;
-  listReceipts(): Promise<string[]>; // SFTP only
-  downloadAllReceipts(): Promise<Array<{ filename: string; content: string }>>; // SFTP only
+  listReceipts(): Promise<string[]>; // Solo SFTP
+  downloadAllReceipts(): Promise<Array<{ filename: string; content: string }>>; // Solo SFTP
 }
 ```
 
@@ -257,22 +257,22 @@ class ReceiptHandler {
 }
 ```
 
-## Examples
+## Esempi
 
-See `examples/fe/` for complete working examples.
+Vedi `examples/fe/` per esempi completi funzionanti.
 
-## Specifications
+## Specifiche
 
-Based on:
+Basato su:
 
-- FatturaPA v1.9 specifications
-- Sistema di Interscambio (SDI) documentation
-- Italian tax regulations (DPR 633/72)
+- Specifiche FatturaPA v1.9
+- Documentazione Sistema di Interscambio (SDI)
+- Regolamenti fiscali italiani (DPR 633/72)
 
-## License
+## Licenza
 
 MIT
 
 ## Disclaimer
 
-This library is not affiliated with Agenzia delle Entrate. Use at your own risk.
+Questa libreria non è affiliata con l'Agenzia delle Entrate. Utilizzare a proprio rischio.

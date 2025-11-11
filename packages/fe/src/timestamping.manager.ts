@@ -154,7 +154,7 @@ export class TimestampingManager {
         tsa: timestampResult.tsa,
         accuracy: timestampResult.accuracy,
       };
-    } catch (error) {
+    } catch {
       // Fallback to mock timestamp for development
       return {
         timestamp: new Date().toISOString(),

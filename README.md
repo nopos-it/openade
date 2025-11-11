@@ -6,22 +6,22 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue.svg)](https://www.typescriptlang.org/)
 [![Docker](https://img.shields.io/badge/Docker-ready-blue.svg)](https://hub.docker.com/)
 
-TypeScript library for Italian Agenzia delle Entrate electronic fiscal documents (SSW v1.1, FatturaPA v1.9).
+Libreria TypeScript per documenti fiscali elettronici dell'Agenzia delle Entrate (SSW v1.1, FatturaPA v1.9).
 
-## 🚧 Status
+## 🚧 Stato
 
-**Version 0.1.0** - In active development, not yet production ready.
+**Versione 0.1.0** - In sviluppo attivo, non ancora pronto per la produzione.
 
-## 📦 Packages
+## 📦 Pacchetti
 
-- **@openade/common** - Shared types, validators, XML builders
-- **@openade/pem** - Point of Emission (device/POS library)
-- **@openade/pel** - Elaboration Point (server library)
-- **@openade/fe** - Fatturazione Elettronica (Electronic Invoicing for SDI)
+- **@openade/common** - Tipi condivisi, validatori, costruttori XML
+- **@openade/pem** - Punto di Emissione (libreria per dispositivi/POS)
+- **@openade/pel** - Punto di Elaborazione (libreria server)
+- **@openade/fe** - Fatturazione Elettronica (per SDI)
 
-## 🚀 Quick Start
+## 🚀 Guida Rapida
 
-### PEM (Point of Emission)
+### PEM (Punto di Emissione)
 
 ```typescript
 import { PEMManager, DocumentBuilder, LotteryGenerator } from '@openade/pem';
@@ -38,18 +38,18 @@ const pem = new PEMManager({
   pelClient: myPELClient,
 });
 
-// Emit receipt
+// Emetti scontrino
 const receipt = new DocumentBuilder()
   .setNumber('0001-0001')
   .setDateTime(new Date().toISOString())
-  .addLine('Product 1', 10.0, 22, 1)
+  .addLine('Prodotto 1', 10.0, 22, 1)
   .addPayment('CASH', 10.0)
   .build();
 
 await pem.emitReceipt(receipt);
 ```
 
-### PEL (Point of Elaboration)
+### PEL (Punto di Elaborazione)
 
 ```typescript
 import { PELServer, AuditServer, ADEClient } from '@openade/pel';
@@ -98,13 +98,13 @@ const invoice = builder.build({
   },
   invoiceNumber: '2024/001',
   invoiceDate: '2024-01-15',
-  lines: [{ description: 'Service', quantity: 1, unitPrice: 1000.0, vatRate: 22 }],
+  lines: [{ description: 'Servizio', quantity: 1, unitPrice: 1000.0, vatRate: 22 }],
   paymentMethod: 'MP05',
 });
 
 const xml = buildInvoiceXML(invoice);
 
-// Transmit to SDI
+// Trasmetti a SDI
 const sdiClient = new SDIClient({
   endpoint: 'https://testservizi.fatturapa.it/services/ricezioneFatture',
   certPath: './certs/client.crt',
@@ -114,143 +114,143 @@ const sdiClient = new SDIClient({
 const result = await sdiClient.sendInvoice(builder.generateFilename(), xml, 'SDICOOP');
 ```
 
-## ✨ Features
+## ✨ Funzionalità
 
-### Electronic Receipts (PEM/PEL)
+### Scontrini Elettronici (PEM/PEL)
 
-- ✅ Commercial document emission with PDF + Data Matrix barcode
-- ✅ Hash-chained journal for immutability
-- ✅ Real-time PEM → PEL synchronization
-- ✅ ADE transmission client (REST API)
-- ✅ Audit server (asynchronous pattern)
-- ✅ Daily receipts aggregation
-- ✅ Outcome polling from ADE
-- ✅ Anomaly management and reporting
-- ✅ Metadata generation for archives
-- ✅ Instant/deferred lottery codes
-- ✅ Digital conservation interface (abstract)
+- ✅ Emissione documenti commerciali con PDF + codice a barre Data Matrix
+- ✅ Registro hash-chain per immutabilità
+- ✅ Sincronizzazione PEM → PEL in tempo reale
+- ✅ Client trasmissione ADE (API REST)
+- ✅ Server audit (pattern asincrono)
+- ✅ Aggregazione scontrini giornalieri
+- ✅ Polling esiti da ADE
+- ✅ Gestione e segnalazione anomalie
+- ✅ Generazione metadati per archivi
+- ✅ Codici lotteria istantanei/differiti
+- ✅ Interfaccia conservazione digitale (astratta)
 
-### Electronic Invoicing (FE)
+### Fatturazione Elettronica (FE)
 
-- ✅ FatturaPA XML generation (FPR12/FPA12 formats)
-- ✅ Invoice builder with automatic VAT calculation
-- ✅ SDI transmission via SDICOOP/SDIFTP
-- ✅ Receipt handler (RC, NS, MC, NE, MT, DT)
-- ✅ Support for B2B and B2C invoices
-- ✅ Multiple document types (TD01-TD28)
-- ✅ Compliant with FatturaPA v1.9 specifications
+- ✅ Generazione XML FatturaPA (formati FPR12/FPA12)
+- ✅ Costruttore fatture con calcolo IVA automatico
+- ✅ Trasmissione SDI via SDICOOP/SDIFTP
+- ✅ Gestore ricevute (RC, NS, MC, NE, MT, DT)
+- ✅ Supporto fatture B2B e B2C
+- ✅ Tipi documento multipli (TD01-TD28)
+- ✅ Conforme alle specifiche FatturaPA v1.9
 
-## 📚 Documentation
+## 📚 Documentazione
 
-See `docs/md/` for technical specifications (Italian).
+Vedi `docs/md/` per le specifiche tecniche (in italiano).
 
 ## 🐳 Docker
 
-Run the complete PEL server with Docker:
+Esegui il server PEL completo con Docker:
 
 ```bash
-# Build and start
+# Build e avvio
 docker-compose up -d
 
-# With PostgreSQL
+# Con PostgreSQL
 docker-compose --profile postgres up -d
 
-# With MinIO (S3-compatible storage)
+# Con MinIO (storage compatibile S3)
 docker-compose --profile s3 up -d
 
-# View logs
+# Visualizza log
 docker-compose logs -f pel-server
 
 # Stop
 docker-compose down
 ```
 
-### Environment Variables
+### Variabili d'Ambiente
 
-Copy `.env.example` to `.env` and configure:
+Copia `.env.example` in `.env` e configura:
 
 ```bash
 ADE_BASE_URL=https://test.agenziaentrate.gov.it/api
 ADE_AUTH_TOKEN=your_token_here
 ```
 
-## 📦 Installation
+## 📦 Installazione
 
 ```bash
-# Install root dependencies + all packages
+# Installa dipendenze root + tutti i pacchetti
 npm install
 
-# Install everything including examples
+# Installa tutto incluso gli esempi
 npm run install:all
 
-# Install only examples
+# Installa solo gli esempi
 npm run install:examples
 ```
 
 ## 🏗️ Build
 
 ```bash
-# Build all packages
+# Build tutti i pacchetti
 npm run build
 
-# Build individual packages
+# Build pacchetti individuali
 npm run build:common
 npm run build:pem
 npm run build:pel
 npm run build:fe
 
-# Clean build artifacts
+# Pulisci artefatti di build
 npm run clean
 ```
 
 ## 🧪 Testing
 
 ```bash
-# Run all tests
+# Esegui tutti i test
 npm test
 
-# Watch mode
+# Modalità watch
 npm run test:watch
 
-# Coverage report
+# Report coverage
 npm run test:coverage
 ```
 
-## 🚀 Run Examples
+## 🚀 Esegui Esempi
 
 ```bash
-# Start PEM example (Point of Sale)
+# Avvia esempio PEM (Punto Vendita)
 npm run start:pem
 
-# Start PEL example (Server with all features)
+# Avvia esempio PEL (Server con tutte le funzionalità)
 npm run start:pel
 
-# Start FE example (Electronic Invoicing)
+# Avvia esempio FE (Fatturazione Elettronica)
 npm run start:fe
 
-# Development mode with auto-reload
+# Modalità sviluppo con auto-reload
 npm run dev:pem
 npm run dev:pel
 npm run dev:fe
 ```
 
-## 🎨 Code Quality
+## 🎨 Qualità del Codice
 
 ```bash
-# Format code
+# Formatta codice
 npm run format
 
-# Check formatting
+# Controlla formattazione
 npm run format:check
 
-# Lint code
+# Lint codice
 npm run lint
 ```
 
-## 📄 License
+## 📄 Licenza
 
 MIT
 
 ## ⚠️ Disclaimer
 
-This library is not affiliated with Agenzia delle Entrate. Use at your own risk.
+Questa libreria non è affiliata con l'Agenzia delle Entrate. Utilizzare a proprio rischio.

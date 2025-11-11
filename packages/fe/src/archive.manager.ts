@@ -250,7 +250,7 @@ export class ArchiveManager {
       return archives.sort(
         (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
       );
-    } catch (error) {
+    } catch {
       return [];
     }
   }
@@ -266,7 +266,7 @@ export class ArchiveManager {
       }
 
       return await this.loadArchiveMetadata(archivePath);
-    } catch (error) {
+    } catch {
       return null;
     }
   }
@@ -290,7 +290,7 @@ export class ArchiveManager {
       await this.copyArchiveContents(archivePath, extractPath);
 
       return true;
-    } catch (error) {
+    } catch {
       return false;
     }
   }
@@ -308,7 +308,7 @@ export class ArchiveManager {
       // Remove archive directory
       await this.removeDirectory(archivePath);
       return true;
-    } catch (error) {
+    } catch {
       return false;
     }
   }
@@ -333,7 +333,7 @@ export class ArchiveManager {
       }
 
       return deletedCount;
-    } catch (error) {
+    } catch {
       return 0;
     }
   }
@@ -408,7 +408,7 @@ export class ArchiveManager {
       }
 
       return JSON.parse(Buffer.from(content).toString('utf8')) as ArchiveMetadata;
-    } catch (error) {
+    } catch {
       return null;
     }
   }
@@ -426,7 +426,7 @@ export class ArchiveManager {
       }
 
       return null;
-    } catch (error) {
+    } catch {
       return null;
     }
   }

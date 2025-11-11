@@ -3,7 +3,15 @@
  * Comprehensive audit trails for FatturaPA invoice operations
  */
 
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'fs';
+import {
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  statSync,
+  unlinkSync,
+  writeFileSync,
+} from 'fs';
 import { join } from 'path';
 
 export interface AuditConfig {
@@ -175,7 +183,7 @@ export class AuditTrailManager {
       }
 
       return this.filterEvents(events, query);
-    } catch (error) {
+    } catch {
       return [];
     }
   }
@@ -214,16 +222,16 @@ export class AuditTrailManager {
 
       for (const logFile of logFiles) {
         const filePath = join(this.config.logDir, logFile);
-        const stats = require('fs').statSync(filePath);
+        const stats = statSync(filePath);
 
         if (stats.mtime < cutoffDate) {
-          require('fs').unlinkSync(filePath);
+          unlinkSync(filePath);
           deletedCount++;
         }
       }
 
       return deletedCount;
-    } catch (error) {
+    } catch {
       return 0;
     }
   }
@@ -285,7 +293,7 @@ export class AuditTrailManager {
     const logFile = this.getCurrentLogFile();
 
     if (existsSync(logFile)) {
-      const stats = require('fs').statSync(logFile);
+      const stats = statSync(logFile);
       if (stats.size >= this.config.maxLogSize!) {
         this.currentLogFile = null; // Force creation of new log file
       }
@@ -304,7 +312,7 @@ export class AuditTrailManager {
       return readdirSync(this.config.logDir)
         .filter((file) => file.startsWith('audit_') && file.endsWith('.log'))
         .sort();
-    } catch (error) {
+    } catch {
       return [];
     }
   }
@@ -322,12 +330,12 @@ export class AuditTrailManager {
         .map((line) => {
           try {
             return JSON.parse(line) as AuditEvent;
-          } catch (error) {
+          } catch {
             return null;
           }
         })
         .filter((event) => event !== null) as AuditEvent[];
-    } catch (error) {
+    } catch {
       return [];
     }
   }

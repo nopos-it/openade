@@ -1,29 +1,13 @@
-# Source files (publish only dist/)
 src/
-__tests__/
-*.test.ts
-*.spec.ts
-
-# Build files
+test/
 tsconfig.json
-tsconfig.*.json
 *.tsbuildinfo
-
-# Development
-.eslintrc.json
-.prettierrc
-jest.config.js
-
-# Documentation
-*.md
-!README.md
-
-# IDE
-.vscode/
-.idea/
-
-# Misc
+.eslintrc*
+.prettierrc*
+__tests__/
+node_modules/
+*.log
 .DS_Store
 coverage/
-node_modules/
-
+.vscode/
+.idea/

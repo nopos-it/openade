@@ -1,26 +1,26 @@
 # @openade/pem
 
-Point of Emission (Punto di Emissione) library for Italian fiscal receipts and commercial documents.
+Libreria Punto di Emissione per scontrini fiscali e documenti commerciali italiani.
 
-## Features
+## Funzionalità
 
-- 🧾 Commercial document emission with PDF generation
-- 📊 Data Matrix barcode generation
-- 📝 Hash-chained journal for immutability
-- 🔄 Real-time PEM → PEL synchronization
-- 🎲 Instant/deferred lottery codes
-- 💾 Flexible storage interface
-- 📱 Support for various device types
+- 🧾 Emissione documenti commerciali con generazione PDF
+- 📊 Generazione codice a barre Data Matrix
+- 📝 Registro hash-chain per immutabilità
+- 🔄 Sincronizzazione PEM → PEL in tempo reale
+- 🎲 Codici lotteria istantanei/differiti
+- 💾 Interfaccia storage flessibile
+- 📱 Supporto per vari tipi di dispositivi
 
-## Installation
+## Installazione
 
 ```bash
 npm install @openade/pem @openade/common
 ```
 
-## Quick Start
+## Guida Rapida
 
-### 1. Create PEM Manager
+### 1. Crea Manager PEM
 
 ```typescript
 import { PEMManager, EmissionPointType } from '@openade/pem';
@@ -31,30 +31,30 @@ const pem = new PEMManager(
     serialNumber: 'PEM001',
     vatNumber: '12345678901',
     businessName: 'My Shop SRL',
-    pelUrl: 'https://pel.example.com', // Optional: for real-time sync
+    pelUrl: 'https://pel.example.com', // Opzionale: per sincronizzazione in tempo reale
   },
   myStorage
 );
 ```
 
-### 2. Open Sales Session
+### 2. Apri Sessione Vendita
 
 ```typescript
 await pem.openSession();
 ```
 
-### 3. Emit Receipt
+### 3. Emetti Scontrino
 
 ```typescript
 const lines = [
   {
-    description: 'Product 1',
+    description: 'Prodotto 1',
     quantity: 2,
     unitPrice: 10.0,
     vatRate: 22,
   },
   {
-    description: 'Product 2',
+    description: 'Prodotto 2',
     quantity: 1,
     unitPrice: 25.0,
     vatRate: 22,
@@ -63,20 +63,20 @@ const lines = [
 
 const result = await pem.emitReceipt(lines);
 
-console.log('Document:', result.document);
+console.log('Documento:', result.document);
 console.log('Hash:', result.hash);
-console.log('Synced:', result.synced);
+console.log('Sincronizzato:', result.synced);
 ```
 
-### 4. Close Session
+### 4. Chiudi Sessione
 
 ```typescript
 await pem.closeSession();
 ```
 
-## Document Builder
+## Costruttore Documenti
 
-Create documents manually:
+Crea documenti manualmente:
 
 ```typescript
 import { DocumentBuilder } from '@openade/pem';
@@ -90,14 +90,14 @@ const builder = new DocumentBuilder({
 const document = builder
   .setNumber('0001-0001')
   .setDateTime(new Date().toISOString())
-  .addLine('Product', 10.0, 22, 1)
+  .addLine('Prodotto', 10.0, 22, 1)
   .addPayment('CASH', 10.0)
   .build();
 ```
 
-## PDF Generation
+## Generazione PDF
 
-Generate PDF with Data Matrix:
+Genera PDF con Data Matrix:
 
 ```typescript
 import { generateCommercialDocumentPDF } from '@openade/pem';
@@ -108,9 +108,9 @@ const pdfBuffer = await generateCommercialDocumentPDF(document, {
 });
 ```
 
-## Journal Management
+## Gestione Registro
 
-Access the hash-chained journal:
+Accedi al registro hash-chain:
 
 ```typescript
 const journal = pem.getJournal();
@@ -118,9 +118,9 @@ const entries = journal.getEntries();
 const lastHash = journal.getLastHash();
 ```
 
-## Lottery Codes
+## Codici Lotteria
 
-Generate lottery codes:
+Genera codici lotteria:
 
 ```typescript
 import { LotteryGenerator } from '@openade/pem';
@@ -130,42 +130,42 @@ const generator = new LotteryGenerator({
   deviceId: 'PEM001',
 });
 
-// Instant lottery
+// Lotteria istantanea
 const instantCode = generator.generateInstantLottery();
 
-// Deferred lottery (for next day)
+// Lotteria differita (per il giorno successivo)
 const deferredCode = generator.generateDeferredLottery();
 ```
 
-## Storage Interface
+## Interfaccia Storage
 
-Implement `IPEMStorage` for custom storage:
+Implementa `IPEMStorage` per storage personalizzato:
 
 ```typescript
 import { IPEMStorage } from '@openade/pem';
 
 class MyStorage implements IPEMStorage {
   async saveDocument(number: string, document: DocumentoCommerciale): Promise<void> {
-    // Save document
+    // Salva documento
   }
 
   async loadDocument(number: string): Promise<DocumentoCommerciale | null> {
-    // Load document
+    // Carica documento
   }
 
   async saveJournal(entries: JournalEntry[]): Promise<void> {
-    // Save journal
+    // Salva registro
   }
 
   async loadJournal(): Promise<JournalEntry[]> {
-    // Load journal
+    // Carica registro
   }
 }
 ```
 
-## PEL Client
+## Client PEL
 
-Connect to PEL server for real-time synchronization:
+Connetti al server PEL per sincronizzazione in tempo reale:
 
 ```typescript
 import { PELClient } from '@openade/pem';
@@ -174,21 +174,21 @@ const pelClient = new PELClient({
   pelBaseUrl: 'https://pel.example.com',
 });
 
-// Get session seed
+// Ottieni seed sessione
 const { seed } = await pelClient.getSessionSeed();
 
-// Send document
+// Invia documento
 const result = await pelClient.sendDocument(document);
 ```
 
-## Device Types
+## Tipi Dispositivo
 
-- **SOFTWARE_SOLUTION**: Software-based solution
-- **HARDWARE_DEVICE**: Hardware device
-- **MOBILE_APP**: Mobile application
-- **WEB_APP**: Web application
+- **SOFTWARE_SOLUTION**: Soluzione software
+- **HARDWARE_DEVICE**: Dispositivo hardware
+- **MOBILE_APP**: Applicazione mobile
+- **WEB_APP**: Applicazione web
 
-## API Reference
+## Riferimento API
 
 ### PEMManager
 
@@ -236,22 +236,22 @@ class JournalManager {
 }
 ```
 
-## Examples
+## Esempi
 
-See `examples/pem/` for complete working examples.
+Vedi `examples/pem/` per esempi completi funzionanti.
 
-## Specifications
+## Specifiche
 
-Based on:
+Basato su:
 
-- SSW (Soluzione Software) v1.1 specifications
-- Italian fiscal receipt regulations
-- Agenzia delle Entrate technical documentation
+- Specifiche SSW (Soluzione Software) v1.1
+- Regolamenti scontrini fiscali italiani
+- Documentazione tecnica Agenzia delle Entrate
 
-## License
+## Licenza
 
 MIT
 
 ## Disclaimer
 
-This library is not affiliated with Agenzia delle Entrate. Use at your own risk.
+Questa libreria non è affiliata con l'Agenzia delle Entrate. Utilizzare a proprio rischio.
